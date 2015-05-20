@@ -1,0 +1,16 @@
+Package: knitLatex
+Title: knitr helpers - mostly tables
+Version: 0.0.0.9000
+Authors@R: person("John", "Shea", email = "coachshea@fastmail.com", role = c("aut", "cre"))
+Description: This package includes several helper functions for working with
+  knitr and latex. It includes xTAb for creating traditional latex tables. lTab
+  for generating Longtable environments; and sTab for generating a Supertabular
+  environment. Additionally, this package contains a knitr_setup() function
+  which fixes a known bug which distorts the 'results="asis"' command when used
+  in conjunction with userdifiend commands; and a com command (<<com=TRUE>>=)
+  which renders the output from knitr as a latex command.
+Depends: R (>= 3.1.1)
+License: GPL-3
+LazyData: true
+Imports: knitr
+Suggests: broom
