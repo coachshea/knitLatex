@@ -1,25 +1,43 @@
-#' @export
+#' Produces a latex longtable
+#'
+#' @param fsthead header on first page of table only; defaults to header; if you
+#'   set this, you are responsible for setting any \\hline, \\toprule, or \\midrule
+#'   lines
+#'
+#' @param lastfoot footer on last page of table only
+#'
+#' @param caption the caption for the table, unlinke xTab and sTab, there is no
+#'   caption.top or captio.bottom option in longtable
+#'
+#' @inheritParams xTab
+#' @examples
+#' lTab(mtcars)
 lTab <- function(x, label = NULL, caption = NULL,
-                 booktabs = getOption('knitrLatex.booktabs', FALSE),
-                 toprule = .book('knitrLatex.toprule', booktabs, '\\toprule', '\\hline'),
-                 bottomrule = .book('knitrLatex.bottomrule', booktabs, '\\bottomrule', '\\hline'),
-                 midrule = .book('knitrLatex.midrule', booktabs, '\\midrule', '\\hline'),
-                 align = .getAlign(x),
-                 head = .head(x, toprule, midrule),
-                 firsthead = NULL,
-                 foot = bottomrule,
+                 booktabs = getOption('knitLat.booktabs', FALSE),
+                 toprule = .book('knitLat.toprule', booktabs, '\\toprule', '\\hline'),
+                 botrule = .book('knitLat.botrule', booktabs, '\\bottomrule', '\\hline'),
+                 midrule = .book('knitLat.midrule', booktabs, '\\midrule', '\\hline'),
+                 colsep = '',
+                 align = .align(x, colsep),
+                 rowsep = '',
+                 rows = getOption('knitLat.rows', FALSE),
+                 header = .header(x, rows),
+                 float = 'center',
+                 envir = 'longtable',
+                 fsthead = NULL,
+                 foot = botrule,
                  lastfoot = NULL){
   .pt(c(
-       '\\begin{center}',
-       paste0('\\begin{longtable}', .align(align)),
+       .printif(float, '\\begin{%s}', float),
+       sprintf('\\begin{%s}{%s}', envir, align),
        .printif(caption, "\\caption{%s}"),
-       .printif(firsthead, "%s\n\\endfirsthead"),
-       .printif(head, "%s\n\\endhead"),
+       .printif(fsthead, "%s\n\\endfirsthead"),
+       .printif(.printhead(toprule, header, midrule), "%s\n\\endhead"),
        .printif(foot, "%s\n\\endfoot"),
        .printif(lastfoot, "%s\n\\endlastfoot"),
-       .body(x),
+       .body(x, rows, rowsep),
        .printif(label, "\\label{%s}"),
-       '\\end{longtable}',
-       '\\end{center}'
+       sprintf('\\end{%s}', envir),
+       .printif(float, '\\end{%s}', float)
        ))
 }

@@ -1,7 +1,12 @@
 # create table header
-.head <- function(x, top, mid){
-  z <- paste(paste(colnames(x), collapse=' & '), '\\\\')
-  paste(top, z, mid, sep='\n')
+.header <- function (x, rows) {
+  ifelse(rows, y  <- append("", colnames(x)), y  <- colnames(x))
+  paste(paste(y, collapse=' & '), '\\\\')
+}
+
+# add toprule and midrule to header
+.printhead <- function (top, header, mid) {
+  .printif(header, paste(top, header, mid, sep='\n'))
 }
 
 # sprintf if
@@ -13,18 +18,15 @@
 }
 
 # create table body
-.body <- function(x){
-  paste(apply(x, 1, paste, collapse=' & '), '\\\\')
+.body <- function (x, rows, rowsep) {
+  if(rows) x  <- cbind(rownames(x), x)
+  sep  <- sprintf("%s\n", rowsep)
+  paste(apply(x, 1, paste, collapse=' & '), '\\\\', collapse=sep)
 }
 
 # align columns
-.getAlign <- function(x){
-  paste(ifelse(sapply(x, is.numeric), 'r', 'l'), collapse='')
-}
-
-# add '{' and '}' to align
-.align <- function (x) {
-  paste0('{', x, '}')
+.align <- function(x, colsep){
+  paste(ifelse(sapply(x, is.numeric), 'r', 'l'), collapse=colsep)
 }
 
 # paste table
