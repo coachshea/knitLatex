@@ -10,9 +10,11 @@ sTab(x, label = NULL, cap.top = NULL, cap.bot = NULL,
   botrule = .book("knitLat.botrule", booktabs, "\\\\bottomrule", "\\\\hline"),
   midrule = .book("knitLat.midrule", booktabs, "\\\\midrule", "\\\\hline"),
   colsep = "", align = .align(x, colsep), rowsep = "",
-  rows = getOption("knitLat.rows", FALSE), float = "center",
-  envir = "supertabular", header = .header(x, rows), fsthead = NULL,
-  tabletail = botrule, lasttail = NULL)
+  rows = getOption("knitLat.rows", FALSE),
+  float = getOption("knitLat.sTab.float", "center"),
+  envir = getOption("knitLat.sTab.envir", "supertabular"),
+  header = .header(x, rows), fsthead = NULL, tabletail = botrule,
+  lasttail = NULL)
 }
 \arguments{
 \item{x}{a data.frame or matrix to form the base of the table}

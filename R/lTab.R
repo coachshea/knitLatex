@@ -23,7 +23,7 @@ lTab <- function(x, label = NULL, caption = NULL,
                  rows = getOption('knitLat.rows', FALSE),
                  position = getOption('knitLat.lTab.position', 'c'),
                  header = .header(x, rows),
-                 float = getOption('knitLat.lTab.float', 'center')
+                 float = getOption('knitLat.lTab.float', 'center'),
                  envir = getOption('knitLat.lTab.envir', 'longtable'),
                  fsthead = NULL,
                  foot = botrule,

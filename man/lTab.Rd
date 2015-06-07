@@ -10,9 +10,11 @@ lTab(x, label = NULL, caption = NULL,
   botrule = .book("knitLat.botrule", booktabs, "\\\\bottomrule", "\\\\hline"),
   midrule = .book("knitLat.midrule", booktabs, "\\\\midrule", "\\\\hline"),
   colsep = "", align = .align(x, colsep), rowsep = "",
-  rows = getOption("knitLat.rows", FALSE), header = .header(x, rows),
-  float = "center", envir = "longtable", fsthead = NULL, foot = botrule,
-  lastfoot = NULL)
+  rows = getOption("knitLat.rows", FALSE),
+  position = getOption("knitLat.lTab.position", "c"), header = .header(x,
+  rows), float = getOption("knitLat.lTab.float", "center"),
+  envir = getOption("knitLat.lTab.envir", "longtable"), fsthead = NULL,
+  foot = botrule, lastfoot = NULL)
 }
 \arguments{
 \item{x}{a data.frame or matrix to form the base of the table}
@@ -38,6 +40,9 @@ lTab(x, label = NULL, caption = NULL,
 
 \item{rows}{include rownames in table, by default the column name
   wil be an empty string}
+
+\item{position}{sets the position of the table i.e.
+  \\begin\{table\}['position']}
 
 \item{header}{sets the value for the table header, defaults to the column
   names; if you set this be sure to end with '\\\\\\\\'}

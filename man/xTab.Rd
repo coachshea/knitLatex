@@ -5,14 +5,15 @@
 \title{Produces a latex table}
 \usage{
 xTab(x, label = NULL, cap.top = NULL, cap.bot = NULL,
-  position = getOption("knitLat.position", "ht"),
+  position = getOption("knitLat.xTab.position", "ht"),
   booktabs = getOption("knitLat.booktabs", FALSE),
   toprule = .book("knitLat.toprule", booktabs, "\\\\toprule", "\\\\hline"),
   botrule = .book("knitLat.botrule", booktabs, "\\\\bottomrule", "\\\\hline"),
   midrule = .book("knitLat.midrule", booktabs, "\\\\midrule", "\\\\hline"),
-  float = "center", envir = "tabular", colsep = "", rowsep = "",
-  align = .align(x, colsep), rows = getOption("knitLat.rows", FALSE),
-  header = .header(x, rows), foot = botrule)
+  float = getOption("knitLat.xTab.float", "center"),
+  envir = getOption("knitLat.xTab.envir", "tabular"), colsep = "",
+  rowsep = "", align = .align(x, colsep), rows = getOption("knitLat.rows",
+  FALSE), header = .header(x, rows), foot = botrule)
 }
 \arguments{
 \item{x}{a data.frame or matrix to form the base of the table}
