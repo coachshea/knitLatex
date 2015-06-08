@@ -4,27 +4,33 @@
 \alias{lTab}
 \title{Produces a latex longtable}
 \usage{
-lTab(x, label = NULL, caption = NULL, booktabs = .op("kLat.lTab.booktabs",
+lTab(x, label = NULL, cap.head = NULL, cap.fhead = NULL,
+  cap.foot = NULL, cap.lfoot = NULL, booktabs = .op("kLat.lTab.booktabs",
   "kLat.booktabs", FALSE), toprule = .book("kLat.toprule", booktabs,
   "\\\\toprule", "\\\\hline"), botrule = .book("kLat.botrule", booktabs,
   "\\\\bottomrule", "\\\\hline"), midrule = .book("kLat.midrule", booktabs,
-  "\\\\midrule", "\\\\hline"), colsep = .op("kLat.lTab.colsep", "kLat.colsep",
-  ""), align = .align(x, colsep), rowsep = .op("kLat.lTab.rowsep",
-  "kLat.rowsep", ""), rows = .op("kLat.lTab.rows", "kLat.rows", FASLE),
-  float = .op("kLat.lTab.float", "kLat.float", "center"),
-  position = getOption("kLat.lTab.position", "c"), header = .header(x,
-  rows), envir = getOption("kLat.lTab.envir", "longtable"), fsthead = NULL,
-  foot = botrule, lastfoot = NULL)
+  "\\\\midrule", "\\\\hline"), rowsep = .op("kLat.lTab.rowsep", "kLat.rowsep",
+  ""), rows = .op("kLat.lTab.rows", "kLat.rows", FASLE),
+  colsep = .op("kLat.lTab.colsep", "kLat.colsep", ""), coldef = .coldef(x,
+  colsep), align = .op("kLat.lTab.align", "kLat.align", "center"),
+  header = .header(x, rows), envir = getOption("kLat.lTab.envir",
+  "longtable"), fsthead = NULL, foot = botrule, lastfoot = NULL)
 }
 \arguments{
 \item{x}{a data.frame or matrix to form the base of the table}
 
-\item{caption}{the caption for the table, unlinke xTab and sTab, there is no
-  caption.top or captio.bottom option in longtable}
+\item{cap.head,cap.fhead,cap.foot,cap.lfoot}{paces the caption in the head,
+  firsthead, foot, or lastfoot respectively. It is important not to set a
+  caption in an otherwise NULL section or strange bugs can occur. It is
+  accaptable if the setting was set by default as in head and foot. Consult the longtable
+  documentation for a more detailed explanation of these options.}
 
-\item{booktabs}{if set to true will use booktabs' \\toprule, \\midrule, and
-  \\bottomrule, if not set will use value of knitLat.booktabs, if that is
-  not set defaults to false}
+\item{booktabs}{logical value, if not set will use value of
+  kLat.(xTab|sTab|lTab).booktabs, if not set will use value of kLat.booktabs,
+  if not set defaults to false. When TRUE toprule defaults to '\\toprule',
+  midrule to '\\midrule', and botrule to '\\bottomrule', when FALSE those
+  values all default to '\\hline'. Has no effect when toprule, midrule, and
+  botrule are individually set.}
 
 \item{toprule}{sets the value for the top rule, if not set will be
   determined by the value of booktabs}
@@ -35,14 +41,18 @@ lTab(x, label = NULL, caption = NULL, booktabs = .op("kLat.lTab.booktabs",
 \item{midrule}{sets the value for the mid rule, if not set will
   be determined by the value of booktabs}
 
-\item{align}{sets column alignment i.e. \\begin\{tabular\}\{'align'\},
+\item{rowsep}{the separaotr to be used between rows (i.e. '\\hline'),
+  defaults to ''}
+
+\item{rows}{include rownames in table, by default the column names
+  will be an empty string}
+
+\item{colsep}{separaotr to be used between columns (i.e. '|'), defaults to
+  '', if coldef is set this value is ignored and the separators must be
+  specificed in the coldef}
+
+\item{coldef}{sets column definition i.e. \\begin\{tabular\}\{'align'\},
   if not set defaults to numeric = right, character = left}
-
-\item{rows}{include rownames in table, by default the column name
-  wil be an empty string}
-
-\item{position}{sets the position of the table i.e.
-  \\begin\{table\}['position']}
 
 \item{header}{sets the value for the table header, defaults to the column
   names; if you set this be sure to end with '\\\\\\\\'}
@@ -55,6 +65,9 @@ lTab(x, label = NULL, caption = NULL, booktabs = .op("kLat.lTab.booktabs",
   bottomrule}
 
 \item{lastfoot}{footer on last page of table only}
+
+\item{caption}{the caption for the table, unlinke xTab and sTab, there is no
+  caption.top or captio.bottom option in longtable}
 }
 \description{
 Produces a latex longtable

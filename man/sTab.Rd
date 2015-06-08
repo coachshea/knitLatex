@@ -4,16 +4,16 @@
 \alias{sTab}
 \title{Produces a latex supertabular environment}
 \usage{
-sTab(x, label = NULL, cap.top = NULL, cap.bot = NULL,
+sTab(x, label = NULL, cap.top = NULL, cap.bot = NULL, cap.table = NULL,
   booktabs = getOption("kLat.sTab.booktabs", getOption("kLat.booktabs",
   FALSE)), toprule = .book("kLat.toprule", booktabs, "\\\\toprule",
   "\\\\hline"), botrule = .book("kLat.botrule", booktabs, "\\\\bottomrule",
   "\\\\hline"), midrule = .book("kLat.midrule", booktabs, "\\\\midrule",
   "\\\\hline"), colsep = getOption("kLat.sTab.colsep",
-  getOption("kLat.colsep", "")), align = .align(x, colsep),
+  getOption("kLat.colsep", "")), coldef = .coldef(x, colsep),
   rowsep = getOption("kLat.sTab.rowsep", getOption("kLat.rowsep", "")),
   rows = getOption("kLat.sTab.rows", getOption("kLat.rows", FALSE)),
-  float = getOption("kLat.sTab.float", getOption("kLat.float", "center")),
+  align = getOption("kLat.sTab.align", getOption("kLat.align", "center")),
   envir = getOption("kLat.sTab.envir", "supertabular"), header = .header(x,
   rows), fsthead = NULL, tabletail = botrule, lasttail = NULL)
 }
@@ -26,9 +26,16 @@ sTab(x, label = NULL, cap.top = NULL, cap.bot = NULL,
 \item{cap.bot}{sets the caption command placing it at the
   bottom of the table}
 
-\item{booktabs}{if set to true will use booktabs' \\toprule, \\midrule, and
-  \\bottomrule, if not set will use value of knitLat.booktabs, if that is
-  not set defaults to false}
+\item{cap.table}{sets '\\tablecaption' option of supertabular, which allows
+  for a default placement of the caption, see
+  supertabular documentation for a more detailed explanation.}
+
+\item{booktabs}{logical value, if not set will use value of
+  kLat.(xTab|sTab|lTab).booktabs, if not set will use value of kLat.booktabs,
+  if not set defaults to false. When TRUE toprule defaults to '\\toprule',
+  midrule to '\\midrule', and botrule to '\\bottomrule', when FALSE those
+  values all default to '\\hline'. Has no effect when toprule, midrule, and
+  botrule are individually set.}
 
 \item{toprule}{sets the value for the top rule, if not set will be
   determined by the value of booktabs}
@@ -39,11 +46,18 @@ sTab(x, label = NULL, cap.top = NULL, cap.bot = NULL,
 \item{midrule}{sets the value for the mid rule, if not set will
   be determined by the value of booktabs}
 
-\item{align}{sets column alignment i.e. \\begin\{tabular\}\{'align'\},
+\item{colsep}{separaotr to be used between columns (i.e. '|'), defaults to
+  '', if coldef is set this value is ignored and the separators must be
+  specificed in the coldef}
+
+\item{coldef}{sets column definition i.e. \\begin\{tabular\}\{'align'\},
   if not set defaults to numeric = right, character = left}
 
-\item{rows}{include rownames in table, by default the column name
-  wil be an empty string}
+\item{rowsep}{the separaotr to be used between rows (i.e. '\\hline'),
+  defaults to ''}
+
+\item{rows}{include rownames in table, by default the column names
+  will be an empty string}
 
 \item{header}{sets the value for the table header, defaults to the column
   names; if you set this be sure to end with '\\\\\\\\'}

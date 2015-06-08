@@ -24,8 +24,8 @@
   paste(apply(x, 1, paste, collapse=' & '), '\\\\', collapse=sep)
 }
 
-# align columns
-.align <- function(x, colsep){
+# set column definitions
+.coldef <- function(x, colsep){
   paste(ifelse(sapply(x, is.numeric), 'r', 'l'), collapse=colsep)
 }
 

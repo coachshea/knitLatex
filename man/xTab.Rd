@@ -6,14 +6,16 @@
 \usage{
 xTab(x, label = NULL, cap.top = NULL, cap.bot = NULL,
   position = getOption("knitLat.xTab.position", "ht"),
-  booktabs = getOption("knitLat.booktabs", FALSE),
+  booktabs = .op("kLat.xTab.booktabs", "kLat.booktabs", FALSE),
   toprule = .book("knitLat.toprule", booktabs, "\\\\toprule", "\\\\hline"),
   botrule = .book("knitLat.botrule", booktabs, "\\\\bottomrule", "\\\\hline"),
   midrule = .book("knitLat.midrule", booktabs, "\\\\midrule", "\\\\hline"),
-  float = getOption("knitLat.xTab.float", "center"),
-  envir = getOption("knitLat.xTab.envir", "tabular"), colsep = "",
-  rowsep = "", align = .align(x, colsep), rows = getOption("knitLat.rows",
-  FALSE), header = .header(x, rows), foot = botrule)
+  align = .op("kLat.xTab.align", "kLat.align", "center"),
+  envir = getOption("knitLat.xTab.envir", "tabular"),
+  colsep = .op("kLat.xTab.colsep", "kLat.colsep", ""), coldef = .coldef(x,
+  colsep), rowsep = .op("kLat.xTab.rowsep", "kLat.rowsep", ""),
+  rows = .op("kLat.xTab.rows", "kLat.rows", FASLE), header = .header(x,
+  rows), foot = botrule)
 }
 \arguments{
 \item{x}{a data.frame or matrix to form the base of the table}
@@ -25,11 +27,14 @@ xTab(x, label = NULL, cap.top = NULL, cap.bot = NULL,
   bottom of the table}
 
 \item{position}{sets the position of the table i.e.
-  \\begin\{table\}['position']}
+\\begin\{table\}['position']}
 
-\item{booktabs}{if set to true will use booktabs' \\toprule, \\midrule, and
-  \\bottomrule, if not set will use value of knitLat.booktabs, if that is
-  not set defaults to false}
+\item{booktabs}{logical value, if not set will use value of
+  kLat.(xTab|sTab|lTab).booktabs, if not set will use value of kLat.booktabs,
+  if not set defaults to false. When TRUE toprule defaults to '\\toprule',
+  midrule to '\\midrule', and botrule to '\\bottomrule', when FALSE those
+  values all default to '\\hline'. Has no effect when toprule, midrule, and
+  botrule are individually set.}
 
 \item{toprule}{sets the value for the top rule, if not set will be
   determined by the value of booktabs}
@@ -40,11 +45,18 @@ xTab(x, label = NULL, cap.top = NULL, cap.bot = NULL,
 \item{midrule}{sets the value for the mid rule, if not set will
   be determined by the value of booktabs}
 
-\item{align}{sets column alignment i.e. \\begin\{tabular\}\{'align'\},
+\item{colsep}{separaotr to be used between columns (i.e. '|'), defaults to
+  '', if coldef is set this value is ignored and the separators must be
+  specificed in the coldef}
+
+\item{coldef}{sets column definition i.e. \\begin\{tabular\}\{'align'\},
   if not set defaults to numeric = right, character = left}
 
-\item{rows}{include rownames in table, by default the column name
-  wil be an empty string}
+\item{rowsep}{the separaotr to be used between rows (i.e. '\\hline'),
+  defaults to ''}
+
+\item{rows}{include rownames in table, by default the column names
+  will be an empty string}
 
 \item{header}{sets the value for the table header, defaults to the column
   names; if you set this be sure to end with '\\\\\\\\'}

@@ -28,11 +28,18 @@
 #' @param midrule sets the value for the mid rule, if not set will
 #'   be determined by the value of booktabs
 #'
-#' @param align sets column alignment i.e. \\begin\{tabular\}\{'align'\},
+#' @param colsep separaotr to be used between columns (i.e. '|'), defaults to
+#'   '', if coldef is set this value is ignored and the separators must be
+#'   specificed in the coldef
+#'
+#' @param coldef sets column definition i.e. \\begin\{tabular\}\{'align'\},
 #'   if not set defaults to numeric = right, character = left 
 #'
 #' @param rows include rownames in table, by default the column names
 #'   will be an empty string
+#'
+#' @param rowsep the separaotr to be used between rows (i.e. '\\hline'),
+#'   defaults to ''
 #'
 #' @param header sets the value for the table header, defaults to the column
 #'   names; if you set this be sure to end with '\\\\\\\\'
@@ -48,30 +55,30 @@ xTab <- function(x, label = NULL,
                  cap.top = NULL,
                  cap.bot = NULL,
                  position = getOption('knitLat.xTab.position', 'ht'),
-                 booktabs = getOption('knitLat.booktabs', FALSE),
+                 booktabs = .op('kLat.xTab.booktabs', 'kLat.booktabs', FALSE),
                  toprule = .book('knitLat.toprule', booktabs, '\\toprule', '\\hline'),
                  botrule = .book('knitLat.botrule', booktabs, '\\bottomrule', '\\hline'),
                  midrule = .book('knitLat.midrule', booktabs, '\\midrule', '\\hline'),
-                 float = getOption('knitLat.xTab.float', 'center'),
+                 align = .op('kLat.xTab.align', 'kLat.align', 'center'),
                  envir = getOption('knitLat.xTab.envir', 'tabular'),
-                 colsep = '',
-                 rowsep = '',
-                 align = .align(x, colsep),
-                 rows = getOption('knitLat.rows', FALSE),
+                 colsep = .op('kLat.xTab.colsep', 'kLat.colsep', ''),
+                 coldef = .coldef(x, colsep),
+                 rowsep = .op('kLat.xTab.rowsep', 'kLat.rowsep', ''),
+                 rows = .op('kLat.xTab.rows', 'kLat.rows', FASLE),
                  header = .header(x, rows),
                  foot = botrule){
   .pt(c(
        paste0('\\begin{table}', .printif(position, "[%s]")),
-       .printif(float, '\\begin{%s}', float),
+       .printif(align, '\\begin{%s}'),
        .printif(cap.top, "\\caption{%s}"),
-       sprintf('\\begin{%s}{%s}', envir, align),
+       sprintf('\\begin{%s}{%s}', envir, coldef),
        .printif(header, .printhead(toprule, header, midrule)),
        .body(x, rows, rowsep),
        .printif(foot, "%s"),
        '\\end{tabular}',
        .printif(cap.bot, "\\caption{%s}"),
        .printif(label, "\\label{%s}"),
-       .printif(float, '\\end{%s}', float),
+       .printif(align, '\\end{%s}'),
        '\\end{table}'
        ))
 }
