@@ -11,10 +11,13 @@
 #'
 #' @param position sets the position of the table i.e.
 #'   \\begin\{table\}['position']
-#'
-#' @param booktabs if set to true will use booktabs' \\toprule, \\midrule, and
-#'   \\bottomrule, if not set will use value of knitLat.booktabs, if that is
-#'   not set defaults to false 
+
+#' @param booktabs logical value, if not set will use value of
+#'   kLat.(xTab|sTab|lTab).booktabs, if not set will use value of kLat.booktabs,
+#'   if not set defaults to false. When TRUE toprule defaults to '\\toprule',
+#'   midrule to '\\midrule', and botrule to '\\bottomrule', when FALSE those
+#'   values all default to '\\hline'. Has no effect when toprule, midrule, and
+#'   botrule are individually set.
 #'
 #' @param toprule sets the value for the top rule, if not set will be
 #'   determined by the value of booktabs
@@ -28,8 +31,8 @@
 #' @param align sets column alignment i.e. \\begin\{tabular\}\{'align'\},
 #'   if not set defaults to numeric = right, character = left 
 #'
-#' @param rows include rownames in table, by default the column name
-#'   wil be an empty string
+#' @param rows include rownames in table, by default the column names
+#'   will be an empty string
 #'
 #' @param header sets the value for the table header, defaults to the column
 #'   names; if you set this be sure to end with '\\\\\\\\'

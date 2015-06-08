@@ -33,3 +33,8 @@
 .pt <- function(x){
   cat(paste(x, collapse='\n'), '\n')
 }
+
+# triple option
+.op <- function (op1, op2, def) {
+  getOption(op1, getOption(op2, def))
+}

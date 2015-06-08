@@ -5,16 +5,17 @@
 \title{Produces a latex supertabular environment}
 \usage{
 sTab(x, label = NULL, cap.top = NULL, cap.bot = NULL,
-  booktabs = getOption("knitLat.booktabs", FALSE),
-  toprule = .book("knitLat.toprule", booktabs, "\\\\toprule", "\\\\hline"),
-  botrule = .book("knitLat.botrule", booktabs, "\\\\bottomrule", "\\\\hline"),
-  midrule = .book("knitLat.midrule", booktabs, "\\\\midrule", "\\\\hline"),
-  colsep = "", align = .align(x, colsep), rowsep = "",
-  rows = getOption("knitLat.rows", FALSE),
-  float = getOption("knitLat.sTab.float", "center"),
-  envir = getOption("knitLat.sTab.envir", "supertabular"),
-  header = .header(x, rows), fsthead = NULL, tabletail = botrule,
-  lasttail = NULL)
+  booktabs = getOption("kLat.sTab.booktabs", getOption("kLat.booktabs",
+  FALSE)), toprule = .book("kLat.toprule", booktabs, "\\\\toprule",
+  "\\\\hline"), botrule = .book("kLat.botrule", booktabs, "\\\\bottomrule",
+  "\\\\hline"), midrule = .book("kLat.midrule", booktabs, "\\\\midrule",
+  "\\\\hline"), colsep = getOption("kLat.sTab.colsep",
+  getOption("kLat.colsep", "")), align = .align(x, colsep),
+  rowsep = getOption("kLat.sTab.rowsep", getOption("kLat.rowsep", "")),
+  rows = getOption("kLat.sTab.rows", getOption("kLat.rows", FALSE)),
+  float = getOption("kLat.sTab.float", getOption("kLat.float", "center")),
+  envir = getOption("kLat.sTab.envir", "supertabular"), header = .header(x,
+  rows), fsthead = NULL, tabletail = botrule, lasttail = NULL)
 }
 \arguments{
 \item{x}{a data.frame or matrix to form the base of the table}

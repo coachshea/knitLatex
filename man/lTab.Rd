@@ -4,16 +4,16 @@
 \alias{lTab}
 \title{Produces a latex longtable}
 \usage{
-lTab(x, label = NULL, caption = NULL,
-  booktabs = getOption("knitLat.booktabs", FALSE),
-  toprule = .book("knitLat.toprule", booktabs, "\\\\toprule", "\\\\hline"),
-  botrule = .book("knitLat.botrule", booktabs, "\\\\bottomrule", "\\\\hline"),
-  midrule = .book("knitLat.midrule", booktabs, "\\\\midrule", "\\\\hline"),
-  colsep = "", align = .align(x, colsep), rowsep = "",
-  rows = getOption("knitLat.rows", FALSE),
-  position = getOption("knitLat.lTab.position", "c"), header = .header(x,
-  rows), float = getOption("knitLat.lTab.float", "center"),
-  envir = getOption("knitLat.lTab.envir", "longtable"), fsthead = NULL,
+lTab(x, label = NULL, caption = NULL, booktabs = .op("kLat.lTab.booktabs",
+  "kLat.booktabs", FALSE), toprule = .book("kLat.toprule", booktabs,
+  "\\\\toprule", "\\\\hline"), botrule = .book("kLat.botrule", booktabs,
+  "\\\\bottomrule", "\\\\hline"), midrule = .book("kLat.midrule", booktabs,
+  "\\\\midrule", "\\\\hline"), colsep = .op("kLat.lTab.colsep", "kLat.colsep",
+  ""), align = .align(x, colsep), rowsep = .op("kLat.lTab.rowsep",
+  "kLat.rowsep", ""), rows = .op("kLat.lTab.rows", "kLat.rows", FASLE),
+  float = .op("kLat.lTab.float", "kLat.float", "center"),
+  position = getOption("kLat.lTab.position", "c"), header = .header(x,
+  rows), envir = getOption("kLat.lTab.envir", "longtable"), fsthead = NULL,
   foot = botrule, lastfoot = NULL)
 }
 \arguments{
