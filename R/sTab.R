@@ -1,6 +1,6 @@
 #' Produces a latex supertabular environment
 #'
-#' @param fsthead header on first page of table only
+#' @param firsthead header on first page of table only
 #'
 #' @param head header to appear at the top of every page of table
 #'
@@ -24,23 +24,23 @@ sTab <- function(x, label = NULL,
                  cap.top = NULL,
                  cap.bot = NULL,
                  cap.table = NULL,
-                 booktabs = getOption('kLat.sTab.booktabs', getOption('kLat.booktabs', FALSE)),
+                 booktabs = .op('kLat.sTab.booktabs', 'kLat.booktabs', FALSE),
                  toprule = .book('kLat.toprule', booktabs, '\\toprule', '\\hline'),
                  botrule = .book('kLat.botrule', booktabs, '\\bottomrule', '\\hline'),
                  midrule = .book('kLat.midrule', booktabs, '\\midrule', '\\hline'),
-                 colsep = getOption('kLat.sTab.colsep', getOption('kLat.colsep', '')),
-                 coldef = .coldef(x, colsep),
-                 rowsep = getOption('kLat.sTab.rowsep', getOption('kLat.rowsep', '')),
-                 rows = getOption('kLat.sTab.rows', getOption('kLat.rows', FALSE)),
-                 align = getOption('kLat.sTab.align', getOption('kLat.align', 'center')),
+                 align = .op('kLat.sTab.align', 'kLat.align', 'center'),
                  envir = getOption('kLat.sTab.envir', 'supertabular'),
-                 header = .header(x, rows),
-                 fsthead = NULL,
+                 colsep = .op('kLat.sTab.colsep', 'kLat.colsep', ''),
+                 coldef = .coldef(x, colsep),
+                 rowsep = .op('kLat.sTab.rowsep', 'kLat.rowsep', ''),
+                 rows = .op('kLat.sTab.rows', 'kLat.rows', FALSE),
+                 head = .header(x, rows),
+                 firsthead = NULL,
                  tabletail = botrule,
                  lasttail = NULL){
   .pt(c(
-       .printif(fsthead, "\\tablefirsthead{%s}"),
-       .printif(.printhead(toprule, header, midrule), "\\tablehead{%s}"),
+       .printif(firsthead, "\\tablefirsthead{%s}"),
+       .printif(.printhead(toprule, head, midrule), "\\tablehead{%s}"),
        .printif(tabletail, "\\tabletail{%s}"),
        .printif(lasttail, "\\tablelasttail{%s}"),
        .printif(cap.top, "\\topcaption{%s}"),
