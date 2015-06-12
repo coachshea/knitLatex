@@ -1,0 +1,82 @@
+---
+title: "xTab"
+author: "John Shea"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{xTab}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# xTab is a command the produces a standard latex table/tabular environment
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+cars  <- cars[1:10,]
+```
+
+For all of the examples taht follow, we will be using the first team rows of the
+mtcars data.frame, which we have saved in the variable 'cars'
+
+## standard xTab table
+
+To produce a latex table, simply pass a matrix or a data.frame to the xTab
+function.
+
+```{r}
+xTab(cars)
+```
+
+## include a label for the table
+
+```{r}
+xTab(cars, label = 'tab:mytable')
+```
+
+## place a caption at the top of the table
+
+```{r}
+xTab(cars, caption.top = 'my table')
+```
+
+## place a caption at the bottom of the table
+```{r}
+xTab(cars, caption.bottom = 'my table')
+```
+## customize table head
+
+By default, xTab will use the column names for the head of the table. To
+customize the table head simply pass in the appropriate latex to the 'head'
+argument. Pass in NULL to avoid a table head.
+
+```{r}
+xTab(cars,
+     head = 'col1 & col 2 & col3 & \\eta & col5 \\\\')
+```
+
+## include rownames in an xTab table
+```{r}
+xTab(cars, rows = TRUE)
+```
+
+## include rownames and a custom head
+
+When providing a custom head with rows set to TRUE, remember to account for the
+extra column produced by the row names
+
+```{r}
+xTab(cars,
+     rows =  TRUE,
+     head = 'col1 & col2 & col3 & \\eta & col5 \\\\')
+```
+
+## separate each row with an \\hline
+```{r}
+xTab(cars, rowsep = '\\hline')
+```
+
+## include a vertical bar between each column
+```{r}
+xTab(cars, colsep = '|')
+```
