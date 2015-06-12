@@ -13,4 +13,6 @@ Depends: R (>= 3.1.1)
 License: GPL-3
 LazyData: true
 Imports: knitr
-Suggests: broom
+Suggests: broom,
+    knitr
+VignetteBuilder: knitr

@@ -8,25 +8,25 @@
 #'
 #' @param lasttail footer on last page of table only
 #'
-#' @param cap.table sets '\\tablecaption' option of supertabular, which allows
-#'   for a default placement of the caption, see
-#'   supertabular documentation for a more detailed explanation.
+#' @param caption.table sets '\\tablecaption' option of supertabular, which
+#'   allows for a default placement of the caption, see supertabular documentation
+#'   for a more detailed explanation.
 #'
 #' @inheritParams xTab
 #'
 #' @examples
 #' sTab(mtcars)
 #' sTab(mtcars,
-#'   cap.top = 'my super table',
+#'   caption.top = 'my super table',
 #'   booktabs = TRUE,
 #'   rows = TRUE)
 sTab <- function(x, label = NULL,
-                 cap.top = NULL,
-                 cap.bot = NULL,
-                 cap.table = NULL,
+                 caption.top = NULL,
+                 caption.bottom = NULL,
+                 caption.table = NULL,
                  booktabs = .op('kLat.sTab.booktabs', 'kLat.booktabs', FALSE),
                  toprule = .book('kLat.toprule', booktabs, '\\toprule', '\\hline'),
-                 botrule = .book('kLat.botrule', booktabs, '\\bottomrule', '\\hline'),
+                 bottomrule = .book('kLat.bottomrule', booktabs, '\\bottomrule', '\\hline'),
                  midrule = .book('kLat.midrule', booktabs, '\\midrule', '\\hline'),
                  align = .op('kLat.sTab.align', 'kLat.align', 'center'),
                  envir = getOption('kLat.sTab.envir', 'supertabular'),
@@ -34,18 +34,18 @@ sTab <- function(x, label = NULL,
                  coldef = .coldef(x, colsep),
                  rowsep = .op('kLat.sTab.rowsep', 'kLat.rowsep', ''),
                  rows = .op('kLat.sTab.rows', 'kLat.rows', FALSE),
-                 head = .header(x, rows),
                  firsthead = NULL,
-                 tabletail = botrule,
+                 head = .header(x, rows),
+                 tail = bottomrule,
                  lasttail = NULL){
   .pt(c(
        .printif(firsthead, "\\tablefirsthead{%s}"),
        .printif(.printhead(toprule, head, midrule), "\\tablehead{%s}"),
-       .printif(tabletail, "\\tabletail{%s}"),
+       .printif(tail, "\\tabletail{%s}"),
        .printif(lasttail, "\\tablelasttail{%s}"),
-       .printif(cap.top, "\\topcaption{%s}"),
-       .printif(cap.bot, "\\bottomcaption{%s}"),
-       .printif(cap.table, "\\bottomcaption{%s}"),
+       .printif(caption.top, "\\topcaption{%s}"),
+       .printif(caption.bottom, "\\bottomcaption{%s}"),
+       .printif(caption.table, "\\bottomcaption{%s}"),
        .printif(align, "\\begin{%s}"),
        sprintf("\\begin{%s}{%s}", envir, coldef),
        .printif(label, "\\label{%s}"),

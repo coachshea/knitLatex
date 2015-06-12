@@ -4,23 +4,25 @@
 \alias{lTab}
 \title{Produces a latex longtable}
 \usage{
-lTab(x, label = NULL, cap.firsthead = NULL, cap.head = NULL,
-  cap.foot = NULL, cap.lastfoot = NULL,
+lTab(x, label = NULL, caption.firsthead = NULL, caption.head = NULL,
+  caption.foot = NULL, caption.lastfoot = NULL,
   booktabs = .op("kLat.lTab.booktabs", "kLat.booktabs", FALSE),
   toprule = .book("kLat.toprule", booktabs, "\\\\toprule", "\\\\hline"),
-  botrule = .book("kLat.botrule", booktabs, "\\\\bottomrule", "\\\\hline"),
-  midrule = .book("kLat.midrule", booktabs, "\\\\midrule", "\\\\hline"),
-  align = .op("kLat.lTab.align", "kLat.align", "center"),
+  bottomrule = .book("kLat.bottomrule", booktabs, "\\\\bottomrule",
+  "\\\\hline"), midrule = .book("kLat.midrule", booktabs, "\\\\midrule",
+  "\\\\hline"), align = .op("kLat.lTab.align", "kLat.align", "center"),
   envir = getOption("kLat.lTab.envir", "longtable"),
   colsep = .op("kLat.lTab.colsep", "kLat.colsep", ""), coldef = .coldef(x,
   colsep), rowsep = .op("kLat.lTab.rowsep", "kLat.rowsep", ""),
   rows = .op("kLat.lTab.rows", "kLat.rows", FALSE), head = .header(x, rows),
-  firsthead = NULL, foot = botrule, lastfoot = NULL)
+  firsthead = NULL, foot = bottomrule, lastfoot = NULL)
 }
 \arguments{
 \item{x}{a data.frame or matrix to form the base of the table}
 
-\item{cap.firsthead,cap.head,cap.foot,cap.lastfoot}{paces the caption in the
+\item{label}{set the table's label, defaults to an empty string}
+
+\item{caption.firsthead,caption.head,caption.foot,caption.lastfoot}{paces the caption in the
   firsthead, head, foot, or lastfoot respectively. It is important not to set a
   caption in an otherwise NULL section (although an empty string is acceptable)
   or strange bugs can occur. It is accaptable if the section was set by default
@@ -37,7 +39,7 @@ lTab(x, label = NULL, cap.firsthead = NULL, cap.head = NULL,
 \item{toprule}{sets the value for the top rule, if not set will be
   determined by the value of booktabs}
 
-\item{botrule}{sets the value for the bottom rule, if not set will
+\item{bottomrule}{sets the value for the bottom rule, if not set will
   be determined by the value of booktabs}
 
 \item{midrule}{sets the value for the mid rule, if not set will
@@ -81,7 +83,7 @@ lTab(x, label = NULL, cap.firsthead = NULL, cap.head = NULL,
 \item{lastfoot}{footer on last page of table only}
 
 \item{caption}{the caption for the table, unlinke xTab and sTab, there is no
-  caption.top or captio.bottom option in longtable}
+  caption.top or caption.bottom option in longtable}
 }
 \description{
 Produces a latex longtable

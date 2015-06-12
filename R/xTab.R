@@ -3,15 +3,17 @@
 #' 
 #' @param x a data.frame or matrix to form the base of the table
 #'
-#' @param cap.top sets the caption command placing it at the top
+#' @param label set the table's label, defaults to an empty string
+#'
+#' @param caption.top sets the caption command placing it at the top
 #'   of the table
 #'
-#' @param cap.bot sets the caption command placing it at the
+#' @param caption.bottom sets the caption command placing it at the
 #'   bottom of the table
 #'
 #' @param position sets the position of the table i.e.
 #'   \\begin\{table\}['position'], defaults to 'ht'
-
+#'
 #' @param booktabs logical value, if not set will use value of
 #'   kLat.(xTab|sTab|lTab).booktabs, if not set will use value of kLat.booktabs,
 #'   if not set defaults to FALSE. When TRUE toprule defaults to '\\toprule',
@@ -22,7 +24,7 @@
 #' @param toprule sets the value for the top rule, if not set will be
 #'   determined by the value of booktabs
 #'
-#' @param botrule sets the value for the bottom rule, if not set will
+#' @param bottomrule sets the value for the bottom rule, if not set will
 #'   be determined by the value of booktabs
 #'
 #' @param midrule sets the value for the mid rule, if not set will
@@ -60,16 +62,16 @@
 #'   botrule
 #'
 #' @examples
-#' xTab(mtcats)
-#' xTab(mtcats, label='my table', caption.top='tab:mytable', booktabs=TRUE)
-#' xTab(mtcats, head='col1 & col2 & \\eta\\\\')
+#' xTab(mtcars)
+#' xTab(mtcars, label='my table', caption.top='tab:mytable', booktabs=TRUE)
+#' xTab(mtcars, head='col1 & col2 & \\eta\\\\')
 xTab <- function(x, label = NULL,
-                 cap.top = NULL,
-                 cap.bot = NULL,
+                 caption.top = NULL,
+                 caption.bottom = NULL,
                  position = getOption('kLat.xTab.position', 'ht'),
                  booktabs = .op('kLat.xTab.booktabs', 'kLat.booktabs', FALSE),
                  toprule = .book('kLat.toprule', booktabs, '\\toprule', '\\hline'),
-                 botrule = .book('kLat.botrule', booktabs, '\\bottomrule', '\\hline'),
+                 bottomrule = .book('kLat.botrule', booktabs, '\\bottomrule', '\\hline'),
                  midrule = .book('kLat.midrule', booktabs, '\\midrule', '\\hline'),
                  align = .op('kLat.xTab.align', 'kLat.align', 'center'),
                  envir = getOption('kLat.xTab.envir', 'tabular'),
@@ -78,17 +80,17 @@ xTab <- function(x, label = NULL,
                  rowsep = .op('kLat.xTab.rowsep', 'kLat.rowsep', ''),
                  rows = .op('kLat.xTab.rows', 'kLat.rows', FALSE),
                  head = .header(x, rows),
-                 foot = botrule){
+                 foot = bottomrule){
   .pt(c(
        paste0('\\begin{table}', .printif(position, "[%s]")),
        .printif(align, '\\begin{%s}'),
-       .printif(cap.top, "\\caption{%s}"),
+       .printif(caption.top, "\\caption{%s}"),
        sprintf('\\begin{%s}{%s}', envir, coldef),
        .printif(head, .printhead(toprule, head, midrule)),
        .body(x, rows, rowsep),
        .printif(foot, "%s"),
        sprintf('\\end{%s}', envir),
-       .printif(cap.bot, "\\caption{%s}"),
+       .printif(caption.bottom, "\\caption{%s}"),
        .printif(label, "\\label{%s}"),
        .printif(align, '\\end{%s}'),
        '\\end{table}'

@@ -4,30 +4,32 @@
 \alias{sTab}
 \title{Produces a latex supertabular environment}
 \usage{
-sTab(x, label = NULL, cap.top = NULL, cap.bot = NULL, cap.table = NULL,
-  booktabs = .op("kLat.sTab.booktabs", "kLat.booktabs", FALSE),
-  toprule = .book("kLat.toprule", booktabs, "\\\\toprule", "\\\\hline"),
-  botrule = .book("kLat.botrule", booktabs, "\\\\bottomrule", "\\\\hline"),
-  midrule = .book("kLat.midrule", booktabs, "\\\\midrule", "\\\\hline"),
-  align = .op("kLat.sTab.align", "kLat.align", "center"),
-  envir = getOption("kLat.sTab.envir", "supertabular"),
+sTab(x, label = NULL, caption.top = NULL, caption.bottom = NULL,
+  caption.table = NULL, booktabs = .op("kLat.sTab.booktabs",
+  "kLat.booktabs", FALSE), toprule = .book("kLat.toprule", booktabs,
+  "\\\\toprule", "\\\\hline"), bottomrule = .book("kLat.bottomrule", booktabs,
+  "\\\\bottomrule", "\\\\hline"), midrule = .book("kLat.midrule", booktabs,
+  "\\\\midrule", "\\\\hline"), align = .op("kLat.sTab.align", "kLat.align",
+  "center"), envir = getOption("kLat.sTab.envir", "supertabular"),
   colsep = .op("kLat.sTab.colsep", "kLat.colsep", ""), coldef = .coldef(x,
   colsep), rowsep = .op("kLat.sTab.rowsep", "kLat.rowsep", ""),
-  rows = .op("kLat.sTab.rows", "kLat.rows", FALSE), head = .header(x, rows),
-  firsthead = NULL, tabletail = botrule, lasttail = NULL)
+  rows = .op("kLat.sTab.rows", "kLat.rows", FALSE), firsthead = NULL,
+  head = .header(x, rows), tail = bottomrule, lasttail = NULL)
 }
 \arguments{
 \item{x}{a data.frame or matrix to form the base of the table}
 
-\item{cap.top}{sets the caption command placing it at the top
+\item{label}{set the table's label, defaults to an empty string}
+
+\item{caption.top}{sets the caption command placing it at the top
   of the table}
 
-\item{cap.bot}{sets the caption command placing it at the
+\item{caption.bottom}{sets the caption command placing it at the
   bottom of the table}
 
-\item{cap.table}{sets '\\tablecaption' option of supertabular, which allows
-  for a default placement of the caption, see
-  supertabular documentation for a more detailed explanation.}
+\item{caption.table}{sets '\\tablecaption' option of supertabular, which
+  allows for a default placement of the caption, see supertabular documentation
+  for a more detailed explanation.}
 
 \item{booktabs}{logical value, if not set will use value of
   kLat.(xTab|sTab|lTab).booktabs, if not set will use value of kLat.booktabs,
@@ -39,7 +41,7 @@ sTab(x, label = NULL, cap.top = NULL, cap.bot = NULL, cap.table = NULL,
 \item{toprule}{sets the value for the top rule, if not set will be
   determined by the value of booktabs}
 
-\item{botrule}{sets the value for the bottom rule, if not set will
+\item{bottomrule}{sets the value for the bottom rule, if not set will
   be determined by the value of booktabs}
 
 \item{midrule}{sets the value for the mid rule, if not set will
@@ -70,13 +72,13 @@ sTab(x, label = NULL, cap.top = NULL, cap.bot = NULL, cap.table = NULL,
   the value of kLat.rows, if not set defaults to FALSE, if TRUE the column name
   for the rownames column defaults to an empty string}
 
-\item{head}{header to appear at the top of every page of table}
-
 \item{firsthead}{header on first page of table only}
 
-\item{lasttail}{footer on last page of table only}
+\item{head}{header to appear at the top of every page of table}
 
 \item{tail}{footer on bottom of every page of table}
+
+\item{lasttail}{footer on last page of table only}
 }
 \description{
 Produces a latex supertabular environment
@@ -84,7 +86,7 @@ Produces a latex supertabular environment
 \examples{
 sTab(mtcars)
 sTab(mtcars,
-  cap.top = 'my super table',
+  caption.top = 'my super table',
   booktabs = TRUE,
   rows = TRUE)
 }
