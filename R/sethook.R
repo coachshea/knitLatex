@@ -1,3 +1,4 @@
+# documentation{{{
 #' sets and fixes knitr hooks
 #'
 #' fixes a well-known bug in the knit_hook 'chunk' and provides a hook entitle
@@ -14,6 +15,7 @@
 #'
 #' @examples
 #' knitr_sethooks()
+#}}}
 knitr_sethooks <- function(){
 
   hook_chunk = knitr::knit_hooks$get('chunk')

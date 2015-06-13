@@ -1,3 +1,4 @@
+# documentation{{{
 #' Produces a latex supertabular environment
 #'
 #' @param firsthead header on first page of table only
@@ -20,6 +21,7 @@
 #'   caption.top = 'my super table',
 #'   booktabs = TRUE,
 #'   rows = TRUE)
+#}}}
 sTab <- function(x, label = NULL,
                  caption.top = NULL,
                  caption.bottom = NULL,

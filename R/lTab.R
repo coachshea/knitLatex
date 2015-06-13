@@ -1,3 +1,4 @@
+# documentation{{{
 #' Produces a latex longtable
 #'
 #' @param firsthead header on first page of table only; defaults to header; if you
@@ -20,6 +21,7 @@
 #'
 #' @examples
 #' lTab(mtcars)
+#}}}
 lTab <- function(x, label = NULL,
                  caption.firsthead = NULL,
                  caption.head = NULL,

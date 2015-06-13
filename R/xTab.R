@@ -1,5 +1,5 @@
+# documentation{{{
 #' Produces a latex table
-#' 
 #' 
 #' @param x a data.frame or matrix to form the base of the table
 #'
@@ -65,6 +65,7 @@
 #' xTab(mtcars)
 #' xTab(mtcars, label='my table', caption.top='tab:mytable', booktabs=TRUE)
 #' xTab(mtcars, head='col1 & col2 & \\eta\\\\')
+#}}}
 xTab <- function(x, label = NULL,
                  caption.top = NULL,
                  caption.bottom = NULL,
@@ -96,3 +97,4 @@ xTab <- function(x, label = NULL,
        '\\end{table}'
        ))
 }
+# vim:set foldmethod=marker:
