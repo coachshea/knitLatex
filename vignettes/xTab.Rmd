@@ -20,7 +20,10 @@ cars  <- mtcars[1:10,1:5]
 
 For all of the examples that follow, we will be using the first team rows and
 five columns of the mtcars data.frame, which we have saved in the variable
-'cars'
+'cars'. It is improtant to note that, when passing latex commands to an xTab
+argument, backslashes must be escaped. For example, you need to pass '\\\\hline'
+to produce \\hline in the latex document. Similarly you must pass'\\\\\\\\' to
+produce \\\\.
 
 ## Basics
 
@@ -55,21 +58,34 @@ xTab(cars, caption.bottom = 'my table')
 
 ### Booktabs
 
+Setting booktabs = TRUE sets the toprule, midrule, and bottomrule arguments to
+\\toprule, \\midrule, and \\bottomrule respectively. If any of those options are
+explicitly set, the booktabs value has no effect. When using booktabs rules,
+regardless of whether you set booktabs = TRUE or set them individually, make
+sure to include \\usepackage(booktabs) in your latex document.
+
 ```{r}
 xTab(cars, booktabs = TRUE)
 ```
+
+```{r}
+xTab(cars, booktabs = TRUE, midrule = '\\hline')
+```
 ## Headers
 
-By default, xTab will use the column names for the head of the table. To
-customize the table head simply pass in the appropriate latex to the 'head'
-argument.
+By default, xTab will use the column names for the head of the table(as
+demonstrated in the above examples). To customize the table head simply pass in
+the appropriate latex to the 'head' argument. The values of toprule and midrule
+are still used and should not be set in the head argument. If you do not want
+them included in your custom header, set either or both to NULL
 
 ```{r}
 xTab(cars,
      head = 'col1 & col 2 & col3 & \\eta & col5 \\\\')
 ```
 
-Pass in NULL to avoid a table head.
+Pass in NULL to avoid a table head. In the case of a NULL head, toprule and
+midrule will not be used.
 
 ```{r}
 xTab(cars, head = NULL)
@@ -111,7 +127,6 @@ xTab(cars, rowsep = '\\hline')
 ```{r}
 xTab(cars, rowsep = '\\midrule')
 ```
-
 
 ### Include a vertical bar between each column
 
