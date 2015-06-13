@@ -22,7 +22,9 @@ For all of the examples that follow, we will be using the first team rows and
 five columns of the mtcars data.frame, which we have saved in the variable
 'cars'
 
-## Standard xTab table
+## Basics
+
+### Standard xTab table
 
 To produce a latex table, simply pass a matrix or a data.frame to the xTab
 function.
@@ -31,40 +33,51 @@ function.
 xTab(cars)
 ```
 
-## Include a label
+### Labels
 
 ```{r}
 xTab(cars, label = 'tab:mytable')
 ```
 
-## Place a caption at the top of the table
+### Captions
+
+Place a caption at the top of the table.
 
 ```{r}
 xTab(cars, caption.top = 'my table')
 ```
 
-## Place a caption at the bottom of the table
+Place a caption at the bottom of the table
+
 ```{r}
 xTab(cars, caption.bottom = 'my table')
 ```
-## Customize table head
+
+### Booktabs
+
+```{r}
+xTab(cars, booktabs = TRUE)
+```
+## Headers
 
 By default, xTab will use the column names for the head of the table. To
 customize the table head simply pass in the appropriate latex to the 'head'
-argument. Pass in NULL to avoid a table head.
+argument.
 
 ```{r}
 xTab(cars,
      head = 'col1 & col 2 & col3 & \\eta & col5 \\\\')
 ```
 
-## Produce a table without a table head
+Pass in NULL to avoid a table head.
 
 ```{r}
 xTab(cars, head = NULL)
 ```
 
-## Include rownames in an xTab table
+## Rows
+
+### Rownames
 
 When including row names in a table, by default xTab will use an empty
 columanname for the 'rownames' column.
@@ -73,7 +86,7 @@ columanname for the 'rownames' column.
 xTab(cars, rows = TRUE)
 ```
 
-## Include rownames and a custom head
+### Rownames with custom header
 
 When providing a custom head with rows set to TRUE, remember to account for the
 extra column produced by the row names
@@ -84,13 +97,7 @@ xTab(cars,
      head = 'rows & col1 & col2 & col3 & \\eta & col5 \\\\')
 ```
 
-## Use booktabs rules instead of default \\hline
-
-```{r}
-xTab(cars, booktabs = TRUE)
-```
-
-## Separate each row with a latex command
+### Row separator
 
 Any arbitrary latex command can be inserted between each row, but the mostcommon
 are \\hline and \\midrule. To use \\midrule, \\usepackage(booktabs) must be
@@ -105,7 +112,8 @@ xTab(cars, rowsep = '\\hline')
 xTab(cars, rowsep = '\\midrule')
 ```
 
-## Include a vertical bar between each column
+
+### Include a vertical bar between each column
 
 ```{r}
 xTab(cars, colsep = '|')
