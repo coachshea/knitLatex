@@ -41,7 +41,7 @@ xTab(cars)
 
 ### Labels
 
-Simply pass a string into the 'label' option and then use \\ref{'label'} in you
+Simply pass a string into the 'label' option and then use \\ref{'label'} in your
 latex document to reference the table. When not set, defaults to NULL.
 
 ```{r}
@@ -65,10 +65,11 @@ xTab(cars, caption.bottom = 'my table')
 ### Booktabs
 
 Setting booktabs = TRUE sets the defaults of the toprule, midrule, and
-bottomrule arguments to \\toprule, \\midrule, and \\bottomrule respectively. When
-using booktabs rules, regardless of whether you set booktabs = TRUE or set them
-individually, make sure to include \\usepackage{booktabs} in your latex
-document.
+bottomrule arguments to \\toprule, \\midrule, and \\bottomrule respectively.
+When using booktabs rules, regardless of whether you set booktabs = TRUE or set
+them individually, make sure to include \\usepackage{booktabs} in your latex
+document. When booktabs is not set, xTab looks for the value of
+kLat.xTab.booktabs, then kLat.booktabs, then defaults to FALSE.
 
 ```{r}
 xTab(cars, booktabs = TRUE)
@@ -79,9 +80,6 @@ If any of those options are explicitly set, the booktabs value has no effect.
 ```{r}
 xTab(cars, booktabs = TRUE, midrule = '\\hline')
 ```
-
-When booktabs is not set, xTab looks for the value of kLat.xTab.booktabs, then
-kLat.booktabs, then defaults to FALSE.
 
 ### Table Position
 
@@ -138,7 +136,8 @@ xTab(cars,
 Any arbitrary latex command can be inserted between each row, but the most common
 are \\hline and \\midrule. To use \\midrule, \\usepackage{booktabs} must be
 declared in the preamble of the latex document, but booktabs = TRUE **does not**
-need to be set on the table.
+need to be set on the table. When not set, will look for the value of
+kLat.xTab.rowsep, then kLat.rowsep, then defaults to an empty string.
 
 ```{r}
 xTab(cars, rowsep = '\\hline')
@@ -150,16 +149,17 @@ xTab(cars, rowsep = '\\midrule')
 
 ## Columns
 
-### Customize column alginment
+### Column alginment
 
-Explicilty set the column definitions. If this is set colsep will have no effect
-and you must handle column separation within this declaration.
+Explicilty set the column definitions. If this is set, colsep will have no effect
+and you must handle column separation within this declaration. Defaults to 'r' for
+numeric vector columns and 'l' for character vector columns.
 
 ```{r}
-xTab(cars, coldef ='rlc|lr')
+xTab(cars, coldef ='rlc|l|p{5cm}')
 ```
 
-### Include a vertical bar between each column
+### Column separator
 
 Place any arbitrary latex between each column. Will have no effect if coldef is
 set.
