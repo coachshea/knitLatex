@@ -34,3 +34,4 @@ knitr_sethooks <- function(){
                         } else "}"
   })
 }
+# vim:set foldmethod=marker:

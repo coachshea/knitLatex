@@ -56,3 +56,4 @@ sTab <- function(x, label = NULL,
        .printif(align, "\\end{%s}")
        ))
 }
+# vim:set foldmethod=marker:
