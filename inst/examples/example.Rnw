@@ -1,0 +1,58 @@
+\documentclass{article}
+
+\usepackage{longtable,supertabular,blindtext}
+
+<<setup, include=FALSE>>=
+# devtools::load_all is required to load the package because it is still in
+# development. For the user, you simply need require(knitLatex)
+devtools::load_all('~/ignore/knitLatex', export_all=FALSE)
+knitr_sethooks()
+
+<<mylongtable, echo=FALSE, com=TRUE, results='asis'>>=
+lTab(mtcars)
+
+<<mysupertabular, echo=FALSE, com=TRUE, results='asis'>>=
+sTab(mtcars)
+
+<<myplot, echo=FALSE, results='asis', fig.cap='myfigure', com=TRUE>>=
+boxplot(mpg~gear,mtcars)
+
+@
+
+\begin{document}
+
+\section{longtable}
+
+\blindtext
+
+\mylongtable
+
+\section{supertabular}
+
+\blindtext
+
+\mysupertabular
+
+\section{figure w/com}
+
+\blindtext
+
+\myplot
+
+\section{xTab}
+
+\blindtext
+
+<<mytable, results='asis'>>=
+xTab(mtcars)
+@
+
+\section{figure wo/com}
+
+\blindtext
+
+<<myfigure, fig.cap='myotherfig'>>=
+plot(mpg)
+@
+
+\end{document}
