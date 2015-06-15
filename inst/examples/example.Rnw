@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass{report}
 
 \usepackage{longtable,supertabular,blindtext}
 
@@ -7,52 +7,68 @@
 # development. For the user, you simply need require(knitLatex)
 devtools::load_all('~/ignore/knitLatex', export_all=FALSE)
 knitr_sethooks()
+megacars  <- rbind(mtcars, mtcars, mtcars)
 
 <<mylongtable, echo=FALSE, com=TRUE, results='asis'>>=
-lTab(mtcars)
+lTab(megacars) #, label='tab:mylongtablea', caption.head='My Long Table')
 
 <<mysupertabular, echo=FALSE, com=TRUE, results='asis'>>=
-sTab(mtcars)
+sTab(megacars, label='tab:mysupertabular', caption.top='My Supertabular')
 
 <<myplot, echo=FALSE, results='asis', fig.cap='myfigure', com=TRUE>>=
-boxplot(mpg~gear,mtcars)
+boxplot(mpg~gear, megacars)
 
 @
 
 \begin{document}
 
-\section{longtable}
+\chapter{Introduction}
+
+The file documents the knitLatex package. The purpose of this package is to
+provide \LaTeX{} helpers designed to work with the knitr package. The package
+provides functions. Three of which, xTab, sTab, and lTab create table,
+longtable, and supertabular environments in LaTeX respectively. The fourth
+function knitr\_sethooks serves two purposes. First, it fixes a well-known bug
+in knitr which dissallows using custom hooks in a ``results=`asis'''
+environment. Secondly, knitr\_sethooks provides a custom command called `com'.
+When ``com=TRUE'' is set in a chunk, the resulting chunk is turned into a
+\LaTeX{} command which can be referenced by the chuck label. For example, the
+chunk ``$\langle\langle$mychuck$\rangle\rangle$'' can be referenced with
+\textbackslash{}mychuck anywhere is the documentand the resultant \LaTeX{} will
+be the same as what normally would have appeared in the spot of the chunk.
+
+\chapter{longtable}
 
 \blindtext
 
 \mylongtable
 
-\section{supertabular}
+\chapter{supertabular}
 
 \blindtext
 
 \mysupertabular
 
-\section{figure w/com}
+\chapter{figure w/com}
 
 \blindtext
 
 \myplot
 
-\section{xTab}
+\chapter{xTab}
 
 \blindtext
 
-<<mytable, results='asis'>>=
-xTab(mtcars)
+<<mytable>>=
+xTab(mtcars, label='tab:mytable', caption.bottom='My Table')
 @
 
-\section{figure wo/com}
+\chapter{figure wo/com}
 
 \blindtext
 
 <<myfigure, fig.cap='myotherfig'>>=
-plot(mpg)
+plot(mtcars$mpg)
 @
 
 \end{document}

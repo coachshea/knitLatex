@@ -1,86 +1,102 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2015.1.31)  14 JUN 2015 07:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2015.1.31)  15 JUN 2015 05:12
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/coachshea/ignore/knitLatex/inst/examples/example
-(/home/coachshea/ignore/knitLatex/inst/examples/example.tex
+**example.tex
+(./example.tex
 LaTeX2e <2014/05/01>
 Babel <3.9l> and hyphenation patterns for 79 languages loaded.
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
-\c@section=\count80
-\c@subsection=\count81
-\c@subsubsection=\count82
-\c@paragraph=\count83
-\c@subparagraph=\count84
-\c@figure=\count85
-\c@table=\count86
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
-) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
-) (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
+
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
-) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
-\Gread@gobject=\count87
+\Gread@gobject=\count88
 ))
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
-) (/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2014/04/23 v1.1a Standard LaTeX Color (DPC)
+
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 137.
-) (/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty
+)
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \OuterFrameSep=\skip43
 \fb@frw=\dimen105
 \fb@frh=\dimen106
 \FrameRule=\dimen107
 \FrameSep=\dimen108
-) (/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty
 Package: alltt 1997/06/16 v2.0g defines alltt environment
-) (/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
 \LTleft=\skip44
 \LTright=\skip45
 \LTpre=\skip46
 \LTpost=\skip47
-\LTchunksize=\count88
+\LTchunksize=\count89
 \LTcapwidth=\dimen109
 \LT@head=\box26
 \LT@firsthead=\box27
 \LT@foot=\box28
 \LT@lastfoot=\box29
-\LT@cols=\count89
-\LT@rows=\count90
-\c@LT@tables=\count91
-\c@LT@chunks=\count92
+\LT@cols=\count90
+\LT@rows=\count91
+\c@LT@tables=\count92
+\c@LT@chunks=\count93
 \LT@p@ftn=\toks15
-) (/usr/share/texlive/texmf-dist/tex/latex/supertabular/supertabular.sty
+)
+(/usr/share/texlive/texmf-dist/tex/latex/supertabular/supertabular.sty
 Package: supertabular 2004/02/20 v4.1e the supertabular environment
-\c@tracingst=\count93
+\c@tracingst=\count94
 \ST@wd=\dimen110
 \ST@rightskip=\skip48
 \ST@leftskip=\skip49
@@ -96,67 +112,73 @@ Package: supertabular 2004/02/20 v4.1e the supertabular environment
 \ST@toadd=\dimen119
 \ST@dimen=\dimen120
 \ST@pbox=\box30
-) (/usr/share/texlive/texmf-dist/tex/latex/blindtext/blindtext.sty
+)
+(/usr/share/texlive/texmf-dist/tex/latex/blindtext/blindtext.sty
 Package: blindtext 2012/01/06 V2.0 blindtext-Package
+
 (/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 )
-\c@blindtext=\count94
-\c@Blindtext=\count95
-\c@blind@countparstart=\count96
-\blind@countxx=\count97
-\blindtext@numBlindtext=\count98
-\blind@countyy=\count99
-\c@blindlist=\count100
-\c@blindlistlevel=\count101
-\c@blindlist@level=\count102
-\blind@listitem=\count103
-\c@blind@listcount=\count104
-\c@blind@levelcount=\count105
-\blind@mathformula=\count106
-\blind@Mathformula=\count107
-\c@blind@randomcount=\count108
-\c@blind@randommax=\count109
-\c@blind@pangramcount=\count110
-\c@blind@pangrammax=\count111
-) (/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty
+\c@blindtext=\count95
+\c@Blindtext=\count96
+\c@blind@countparstart=\count97
+\blind@countxx=\count98
+\blindtext@numBlindtext=\count99
+\blind@countyy=\count100
+\c@blindlist=\count101
+\c@blindlistlevel=\count102
+\c@blindlist@level=\count103
+\blind@listitem=\count104
+\c@blind@listcount=\count105
+\c@blind@levelcount=\count106
+\blind@mathformula=\count107
+\blind@Mathformula=\count108
+\c@blind@randomcount=\count109
+\c@blind@randommax=\count110
+\c@blind@pangramcount=\count111
+\c@blind@pangrammax=\count112
+)
+(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
 tim
 ) (./example.aux)
 \openout1 = `example.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 152.
-LaTeX Font Info:    ... okay on input line 152.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 152.
-LaTeX Font Info:    ... okay on input line 152.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 152.
-LaTeX Font Info:    ... okay on input line 152.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 152.
-LaTeX Font Info:    ... okay on input line 152.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 152.
-LaTeX Font Info:    ... okay on input line 152.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 152.
-LaTeX Font Info:    ... okay on input line 152.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 282.
+LaTeX Font Info:    ... okay on input line 282.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 282.
+LaTeX Font Info:    ... okay on input line 282.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 282.
+LaTeX Font Info:    ... okay on input line 282.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 282.
+LaTeX Font Info:    ... okay on input line 282.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 282.
+LaTeX Font Info:    ... okay on input line 282.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 282.
+LaTeX Font Info:    ... okay on input line 282.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count112
+\scratchcounter=\count113
 \scratchdimen=\dimen121
 \scratchbox=\box31
-\nofMPsegments=\count113
-\nofMParguments=\count114
+\nofMPsegments=\count114
+\nofMParguments=\count115
 \everyMPshowfont=\toks16
-\MPscratchCnt=\count115
+\MPscratchCnt=\count116
 \MPscratchDim=\dimen122
-\MPnumerator=\count116
-\makeMPintoPDFobject=\count117
+\MPnumerator=\count117
+\makeMPintoPDFobject=\count118
 \everyMPtoPDFconversion=\toks17
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
+
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
 Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
-) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
@@ -164,16 +186,22 @@ Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
 Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
-)) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
 Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
 Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 Package etexcmds Info: Could not find \expanded.
@@ -185,45 +213,87 @@ Package grfext Info: Graphics extension search list:
 (grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 452.
+
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Overfull \vbox (11.04718pt too high) has occurred while \output is active []
+Chapter 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 287.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 287.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 296.
 
-[1
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 296.
+ [1
+
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 164.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 164.
-[2] <figure/myplot-1.pdf, id=11, 505.89pt x 505.89pt>
+Chapter 2.
+[2
+
+] [3] [4]
+Chapter 3.
+[5
+
+] [6] [7]
+Chapter 4.
+<figure/myplot-1.pdf, id=29, 505.89pt x 505.89pt>
 File: figure/myplot-1.pdf Graphic file (type pdf)
-<use figure/myplot-1.pdf>
-Package pdftex.def Info: figure/myplot-1.pdf used on input line 170.
+ <use figure/myplot-1.pdf>
+Package pdftex.def Info: figure/myplot-1.pdf used on input line 315.
 (pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+
+[8
+
+] [9 <./figure/myplot-1.pdf>]
+Chapter 5.
+Package color Info: Redefining color shadecolor on input line 322.
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 178.
-[3] [4 <./figure/myplot-1.pdf>]
-Package color Info: Redefining color shadecolor on input line 229.
-[5] [6] (./example.aux) ) 
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 324.
+
+Overfull \hbox (22.4968pt too wide) in paragraph at lines 371--371
+[]\OT1/cmtt/m/n/10 ## mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear
+ & carb \\[] 
+ []
+
+[10
+
+] [11]
+Chapter 6.
+Package color Info: Redefining color shadecolor on input line 380.
+<figure/myfigure-1.pdf, id=48, 505.89pt x 505.89pt>
+File: figure/myfigure-1.pdf Graphic file (type pdf)
+
+<use figure/myfigure-1.pdf>
+Package pdftex.def Info: figure/myfigure-1.pdf used on input line 385.
+(pdftex.def)             Requested size: 345.0pt x 345.00414pt.
+ [12
+
+] [13 <./figure/myfigure-1.pdf>] (./example.aux) ) 
 Here is how much of TeX's memory you used:
- 1982 strings out of 493105
- 28582 string characters out of 6137072
- 114578 words of memory out of 5000000
- 5431 multiletter control sequences out of 15000+600000
- 4413 words of font info for 17 fonts, out of 8000000 for 9000
+ 2025 strings out of 493105
+ 29115 string characters out of 6137072
+ 140748 words of memory out of 5000000
+ 5471 multiletter control sequences out of 15000+600000
+ 4721 words of font info for 18 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,8n,23p,328b,241s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt1
-0.pfb>
-Output written on example.pdf (6 pages, 54338 bytes).
+ 38i,7n,23p,284b,271s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmtt10.pfb>
+Output written on example.pdf (13 pages, 86925 bytes).
 PDF statistics:
- 41 PDF objects out of 1000 (max. 8388607)
- 27 compressed objects within 1 object stream
+ 80 PDF objects out of 1000 (max. 8388607)
+ 55 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

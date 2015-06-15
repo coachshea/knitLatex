@@ -13,8 +13,8 @@ functions to assist in using knitr with latex:
 }
 \details{
 \itemize{
-  \item xTab: which creates a basic latex table environment.
-  \item lTab: which creates a longtable evironment.
+  \item xTab: creates a basic latex table.
+  \item lTab: creates a longtable evironment.
   \item sTab: creates a supertabular environment.
   \item knitr_sethooks: fixes a bug in the knit_hook chunk and provids a
     'com' hook which turns knitr output into latex commands
