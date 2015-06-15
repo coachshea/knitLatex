@@ -1,12 +1,13 @@
 \documentclass{report}
 
-\usepackage{longtable,supertabular,blindtext}
+\usepackage{longtable,supertabular,hyperref}
 
 <<setup, include=FALSE>>=
 # devtools::load_all is required to load the package because it is still in
 # development. For the user, you simply need require(knitLatex)
 devtools::load_all('~/ignore/knitLatex', export_all=FALSE)
 knitr_sethooks()
+cars  <- mtcars[1:10,1:5]
 megacars  <- rbind(mtcars, mtcars, mtcars)
 
 <<mylongtable, echo=FALSE, com=TRUE, results='asis'>>=
@@ -26,9 +27,11 @@ boxplot(mpg ~ gear, megacars)
 
 \begin{document}
 
+\tableofcontents
+
 \chapter{Introduction}
 
-The file documents the knitLatex package. The purpose of this package is to
+This file documents the knitLatex package. The purpose of this package is to
 provide \LaTeX{} helpers designed to work with the knitr package. The package
 provides functions. Three of which, xTab, sTab, and lTab create table,
 longtable, and supertabular environments in LaTeX respectively. The fourth
@@ -41,47 +44,56 @@ command which can be referenced by the chuck label. For example, the chunk
 \textbackslash{}mychuck anywhere is the documentand the resultant \LaTeX{} will
 be the same as what normally would have appeared in the spot of the chunk.
 
-\chapter{longtable with com}
+\chapter{xTab}
+
+\section{with com}
+
+\section{without com}
+
+Because we set
+the label option as `tab:mytable' we can type the following:\\
+
+\noindent
+\verb|observe table \ref{tab:mytable} on page \pageref{tab:mytable}.|\\
+
+\noindent
+and produce this:\\
+
+\noindent
+observe table \ref{tab:mytable} on page \pageref{tab:mytable}.
+
+<<mytable, results = 'asis'>>=
+xTab(cars, label='tab:mytable', caption.bottom='My Table')
+@
+
+\chapter{lTab with com}
+
+\section{with com}
 
 This chapter demonstrates a longtable environment create with lTab. In this
 example, we created a latex command called \textbackslash{}mylongtable in the
-preample of the document by setting `com = TRUE' on the chunk. Because we set
-the label option as `tab:mylongtable' we can type the following:\\
-
-\noindent
-\verb|observe table \ref{tab:mylongtable} on page \pageref{tab:mylongtable}.|
-
-\noindent
-and produce this:
-
-\noindent
-observe table \ref{tab:mylongtable} on page \pageref{tab:mylongtable}.
+preample of the document by setting `com = TRUE' on the chunk.
 
 \mylongtable
 
-\chapter{supertabular with com}
+\section{without com}
 
-\blindtext
+\chapter{sTab with com}
+
+\section{with com}
 
 \mysupertabular
 
-\chapter{figure with com}
+\section{without com}
 
-\blindtext
+
+\chapter{figure}
+
+\section{with com}
 
 \myplot
 
-\chapter{xTab without com}
-
-\blindtext
-
-<<mytable, result = 'asis'>>=
-xTab(mtcars, label='tab:mytable', caption.bottom='My Table')
-@
-
-\chapter{figure without com}
-
-\blindtext
+\section{without com}
 
 <<myfigure, fig.cap='myotherfig'>>=
 plot(mtcars$mpg)
