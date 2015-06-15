@@ -158,6 +158,7 @@ mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear & carb \\
 19.7 & 6 & 145 & 175 & 3.62 & 2.77 & 15.5 & 0 & 1 & 5 & 6 \\
 15 & 8 & 301 & 335 & 3.54 & 3.57 & 14.6 & 0 & 1 & 5 & 8 \\
 21.4 & 4 & 121 & 109 & 4.11 & 2.78 & 18.6 & 1 & 1 & 4 & 2 \\
+\label{tab:mylongtablea}
 \end{longtable}
 \end{center} 
 }
@@ -288,33 +289,33 @@ provide \LaTeX{} helpers designed to work with the knitr package. The package
 provides functions. Three of which, xTab, sTab, and lTab create table,
 longtable, and supertabular environments in LaTeX respectively. The fourth
 function knitr\_sethooks serves two purposes. First, it fixes a well-known bug
-in knitr which dissallows using custom hooks in a ``results=`asis'''
-environment. Secondly, knitr\_sethooks provides a custom command called `com'.
-When ``com=TRUE'' is set in a chunk, the resulting chunk is turned into a
-\LaTeX{} command which can be referenced by the chuck label. For example, the
-chunk ``$\langle\langle$mychuck$\rangle\rangle$'' can be referenced with
+in knitr which occurs when using custom hooks in a results=`asis' environment.
+Secondly, knitr\_sethooks provides a custom command called `com'. When
+``com=TRUE'' is set in a chunk, the resulting chunk is turned into a \LaTeX{}
+command which can be referenced by the chuck label. For example, the chunk
+``$\langle\langle$mychuck$\rangle\rangle$'' can be referenced with
 \textbackslash{}mychuck anywhere is the documentand the resultant \LaTeX{} will
 be the same as what normally would have appeared in the spot of the chunk.
 
-\chapter{longtable}
+\chapter{longtable with com}
 
 \blindtext
 
 \mylongtable
 
-\chapter{supertabular}
+\chapter{supertabular with com}
 
 \blindtext
 
 \mysupertabular
 
-\chapter{figure w/com}
+\chapter{figure with com}
 
 \blindtext
 
 \myplot
 
-\chapter{xTab}
+\chapter{xTab without com}
 
 \blindtext
 
@@ -372,7 +373,7 @@ be the same as what normally would have appeared in the spot of the chunk.
 \end{kframe}
 \end{knitrout}
 
-\chapter{figure wo/com}
+\chapter{figure without com}
 
 \blindtext
 
