@@ -56,6 +56,7 @@
 \newcommand\mylongtable{%
 \begin{center}
 \begin{longtable}{rrrrrrrrrrr}
+\caption{My Long Table}
 \hline
 mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear & carb \\
 \hline
@@ -158,7 +159,7 @@ mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear & carb \\
 19.7 & 6 & 145 & 175 & 3.62 & 2.77 & 15.5 & 0 & 1 & 5 & 6 \\
 15 & 8 & 301 & 335 & 3.54 & 3.57 & 14.6 & 0 & 1 & 5 & 8 \\
 21.4 & 4 & 121 & 109 & 4.11 & 2.78 & 18.6 & 1 & 1 & 4 & 2 \\
-\label{tab:mylongtablea}
+\label{tab:mylongtable}
 \end{longtable}
 \end{center} 
 }
@@ -299,7 +300,19 @@ be the same as what normally would have appeared in the spot of the chunk.
 
 \chapter{longtable with com}
 
-\blindtext
+This chapter demonstrates a longtable environment create with lTab. In this
+example, we created a latex command called \textbackslash{}mylongtable in the
+preample of the document by setting `com = TRUE' on the chunk. Because we set
+the label option as `tab:mylongtable' we can type the following:\\
+
+\noindent
+\verb|observe table \ref{tab:mylongtable} on page \pageref{tab:mylongtable}.|
+
+\noindent
+and produce this:
+
+\noindent
+observe table \ref{tab:mylongtable} on page \pageref{tab:mylongtable}.
 
 \mylongtable
 

@@ -10,13 +10,17 @@ knitr_sethooks()
 megacars  <- rbind(mtcars, mtcars, mtcars)
 
 <<mylongtable, echo=FALSE, com=TRUE, results='asis'>>=
-lTab(megacars, label = 'tab:mylongtablea') #, caption.head='My Long Table')
+lTab(megacars,
+     label = 'tab:mylongtable',
+     caption.head = 'My Long Table')
 
 <<mysupertabular, echo=FALSE, com=TRUE, results='asis'>>=
-sTab(megacars, label = 'tab:mysupertabular', caption.top = 'My Supertabular')
+sTab(megacars,
+     label = 'tab:mysupertabular',
+     caption.top = 'My Supertabular')
 
 <<myplot, echo=FALSE, results='asis', fig.cap='myfigure', com=TRUE>>=
-boxplot(mpg~gear, megacars)
+boxplot(mpg ~ gear, megacars)
 
 @
 
@@ -39,7 +43,19 @@ be the same as what normally would have appeared in the spot of the chunk.
 
 \chapter{longtable with com}
 
-\blindtext
+This chapter demonstrates a longtable environment create with lTab. In this
+example, we created a latex command called \textbackslash{}mylongtable in the
+preample of the document by setting `com = TRUE' on the chunk. Because we set
+the label option as `tab:mylongtable' we can type the following:\\
+
+\noindent
+\verb|observe table \ref{tab:mylongtable} on page \pageref{tab:mylongtable}.|
+
+\noindent
+and produce this:
+
+\noindent
+observe table \ref{tab:mylongtable} on page \pageref{tab:mylongtable}.
 
 \mylongtable
 

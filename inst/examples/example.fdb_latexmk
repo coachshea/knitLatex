@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1434360288 "example.tex" "example.pdf" "example" 1434360289
+["pdflatex"] 1434361689 "example.tex" "example.pdf" "example" 1434362022
   "/etc/texmf/web2c/texmf.cnf" 1423322990 1464 a4af512f3aaf20a97ae1601d19d817c4 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
@@ -45,10 +45,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1417527377 31088 8e088e958dd0258cc5414842768a3a00 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1422732664 1561293 ee2f233f6325ee204ca709e796fd06a8 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1422731061 3840967 1f07b535f6f8930adc4dfc820806d453 ""
-  "example.aux" 1434360289 1698 2e28acd914be002991bd548272a0c818 ""
-  "example.tex" 1434360288 18611 5dcf1d8eb57130e174cab37efeaa5ad1 ""
-  "figure/myfigure-1.pdf" 1434360288 4811 680cdd6a2ed6d92c35562ff4261706bc ""
-  "figure/myplot-1.pdf" 1434360288 4531 bf8386facf1837211340f1493c67d267 ""
+  "example.aux" 1434361777 1928 5273069ce395b17411ed305629e34a4b ""
+  "example.tex" 1434361688 19122 f8f8bcea7aa77720e1ee29cc0c8448a7 ""
+  "figure/myfigure-1.pdf" 1434361688 4811 de5fadcb297e31af80d3da6802ff4d2e ""
+  "figure/myplot-1.pdf" 1434361688 4531 588836c485b831c49484723baf9fbc1d ""
   (generated)
   "example.aux"
   "example.log"
