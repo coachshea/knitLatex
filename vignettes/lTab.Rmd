@@ -1,12 +1,12 @@
 ---
-title: "xTab"
+title: "lTab"
 author: "John Shea"
 date: "`r Sys.Date()`"
 output:
   rmarkdown::html_vignette:
     toc: true
 vignette: >
-  %\VignetteIndexEntry{xTab}
+  %\VignetteIndexEntry{lTab}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,19 +16,22 @@ knitr::opts_chunk$set(collapse = TRUE)
 cars  <- mtcars[1:10,1:5]
 ```
 
-xTab is a command the produces a standard latex table/tabular environment
+lTab is a command the produces a standard latex table/tabular environment
 
 For all of the examples that follow, we will be using the first ten rows and
 five columns of the mtcars data.frame, which we have saved in the variable
-'cars'.
+'cars'. In an actual use case, a table this small could easily be accomodated
+with lTab, however, for the purposes of these demonstrations, it will be easier
+to see the effects of the individual options without needing to comb through a
+large, multi-page table. 
 
 **Important Notes**
 
-* When passing latex commands to an xTab argument, backslashes must be escaped.
+* When passing latex commands to an lTab argument, backslashes must be escaped.
   For example, you need to pass '\\\\hline' to produce '\\hline' in the latex
   document. Similarly you must pass'\\\\\\\\' to produce '\\\\'.
 * The following examples write the latex tables to stdout for demonstration
-  purposes. To see an actual .Rnw file, and the resultant pdf file select the
+  purposes. To see an actual .Rnw file, and the resultant pdf file, select the
   links below. The pdf file is written to be a knitLatex tutorial in and of
   itself. However, reading the .Rnw file can provide further insight into the
   uses of this package.
@@ -37,13 +40,13 @@ five columns of the mtcars data.frame, which we have saved in the variable
 
 # Basics
 
-## Standard xTab table
+## Standard lTab table
 
-To produce a latex table, simply pass a matrix or a data.frame to the xTab
+To produce a latex table, simply pass a matrix or a data.frame to the lTab
 function.
 
 ```{r}
-xTab(cars)
+lTab(cars)
 ```
 
 ## Labels
@@ -52,21 +55,28 @@ Simply pass a string into the 'label' option and then use \\ref{'label'} in your
 latex document to reference the table. When not set, defaults to NULL.
 
 ```{r}
-xTab(cars, label = 'tab:mytable')
+lTab(cars, label = 'tab:mytable')
 ```
 
 ## Captions
 
-Place a caption at the top of the table.
+The lTab environment can place a caption in the head, firsthead, foot, or last
+foot.
 
 ```{r}
-xTab(cars, caption.top = 'my table')
+lTab(cars, caption.head = 'my caption in head')
 ```
 
-Place a caption at the bottom of the table
+```{r}
+lTab(cars, caption.firsthead = 'my caption in firsthead')
+```
 
 ```{r}
-xTab(cars, caption.bottom = 'my table')
+lTab(cars, caption.foot = 'my caption in foot')
+```
+
+```{r}
+lTab(cars, caption.lastfoot = 'my caption in last foot')
 ```
 
 ## Booktabs
@@ -75,37 +85,32 @@ Setting booktabs = TRUE sets the defaults of the toprule, midrule, and
 bottomrule arguments to \\toprule, \\midrule, and \\bottomrule respectively.
 When using booktabs rules, regardless of whether you set booktabs = TRUE or set
 them individually, make sure to include \\usepackage{booktabs} in your latex
-document. When booktabs is not set, xTab looks for the value of
-kLat.xTab.booktabs, then kLat.booktabs, then defaults to FALSE.
+document. When booktabs is not set, lTab looks for the value of
+kLat.lTab.booktabs, then kLat.booktabs, then defaults to FALSE.
 
 ```{r}
-xTab(cars, booktabs = TRUE)
+lTab(cars, booktabs = TRUE)
 ```
 
 If any of those options are explicitly set, the booktabs value has no effect. 
 
 ```{r}
-xTab(cars, booktabs = TRUE, midrule = '\\hline')
+lTab(cars, booktabs = TRUE, midrule = '\\hline')
 ```
 
-## Table Position
-
-If not set, xTAb will look for the value of kLat.xTab.position. If not set,
-defaults to 'ht'
-
-```{r}
-xTab(cars, position = '!htbp')
-```
 # Headers
 
-By default, xTab will use the column names for the head of the table(as
-demonstrated in the above examples). To customize the table head simply pass in
-the appropriate latex to the 'head' argument. The values of toprule and midrule
-are still used and should not be set in the head argument. If you do not want
-them included in your custom header, set either or both to NULL
+## Head
+
+By default, lTab will use the column names for the head of the table(as
+demonstrated in the above examples). The head argument is displayed at the top of
+the table on each page that the table spans. To customize the table head simply
+pass in the appropriate latex to the 'head' argument. The values of toprule and
+midrule are still used and should not be set in the head argument. If you do not
+want them included in your custom header, set either or both to NULL
 
 ```{r}
-xTab(cars,
+lTab(cars,
      head = 'col1 & col 2 & col3 & \\eta & col5 \\\\')
 ```
 
@@ -113,19 +118,59 @@ Pass in NULL to avoid a table head. In the case of a NULL head, toprule and
 midrule will not be used.
 
 ```{r}
-xTab(cars, head = NULL)
+lTab(cars, head = NULL)
+```
+
+To preserve the top and midrules, pass an empty string to head. Often, people
+want a toprule with no head or midrule. In that case, pass an empty string into
+the head argument and NULL into midule. You can then use the default toprule
+value (as depicted below), explicitly set toprule, or set booktabs = TRUE to set
+the toprule and bottomrule simultaneously.
+
+```{r}
+lTab(cars, head = '', midrule = NULL)
+```
+
+## FirstHead
+
+In a supertabular environment, it is possible to present a different first head
+(i.e. header on first page of table only).
+
+```{r}
+lTab(cars,
+     firsthead = 'f1 & f2 & f3 & f4 & f5 \\\\')
+```
+
+**Important Note**
+
+As demonstrated in the above example, both head and firsthead use the toprule
+and midrule commands by default. If you desire to use different commands for the
+head and firsthead (or if you want one, but not both to use a top and
+midrule), you must set both toprule and midrule to NULL and manually insert the
+commands into head and firsthead as shown below examples.
+
+```{r}
+lTab(cars, toprule = NULL, midrule = NULL,
+     firsthead = '\\toprule\nf1 & f2 & f3 & f4 & f5 \\\\\nmidrule',
+     head = '\\hline\n col1 & col2 & col3 & cll4 & col5 \\\\\n\\hline')
+```
+
+```{r}
+lTab(cars, toprule = NULL, midrule = NULL,
+     firsthead = '\\toprule\nf1 & f2 & f3 & f4 & f5 \\\\\nmidrule',
+     head = '\\toprule')
 ```
 
 # Rows
 
 ## Rownames
 
-When including row names in a table, by default xTab will use an empty column
-name for the 'rownames' column. When rows is not set, xTab looks for the value
-of kLat.xTab.rows, then klat.rows, then defaults to false.
+When including row names in a table, by default lTab will use an empty column
+name for the 'rownames' column. When rows is not set, lTab looks for the value
+of kLat.lTab.rows, then klat.rows, then defaults to false.
 
 ```{r}
-xTab(cars, rows = TRUE)
+lTab(cars, rows = TRUE)
 ```
 
 ## Rownames with custom header
@@ -134,7 +179,7 @@ When providing a custom head with rows set to TRUE, remember to account for the
 extra column produced by the row names
 
 ```{r}
-xTab(cars,
+lTab(cars,
      rows =  TRUE,
      head = 'rows & col1 & col2 & col3 & \\eta & col5 \\\\')
 ```
@@ -144,15 +189,15 @@ xTab(cars,
 Any arbitrary latex command can be inserted between each row, but the most
 common are \\hline and \\midrule. To use \\midrule, \\usepackage{booktabs} must
 be declared in the preamble of the latex document, but booktabs = TRUE **does
-not** need to be set on the table. When rowsep is not set, xTab looks for the
-value of kLat.xTab.rowsep, then kLat.rowsep, then defaults to an empty string.
+not** need to be set on the table. When rowsep is not set, lTab looks for the
+value of kLat.lTab.rowsep, then kLat.rowsep, then defaults to an empty string.
 
 ```{r}
-xTab(cars, rowsep = '\\hline')
+lTab(cars, rowsep = '\\hline')
 ```
 
 ```{r}
-xTab(cars, rowsep = '\\midrule')
+lTab(cars, rowsep = '\\midrule')
 ```
 
 # Columns
@@ -164,7 +209,7 @@ and you must handle column separation within this declaration. Defaults to 'r' f
 numeric vector columns and 'l' for character vector columns.
 
 ```{r}
-xTab(cars, coldef ='rlc|l|p{5cm}')
+lTab(cars, coldef ='rlc|l|p{5cm}')
 ```
 
 ## Column separator
@@ -173,5 +218,5 @@ Place any arbitrary latex between each column. Will have no effect if coldef is
 set.
 
 ```{r}
-xTab(cars, colsep = '|')
+lTab(cars, colsep = '|')
 ```

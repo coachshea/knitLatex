@@ -93,11 +93,14 @@ sTab(cars, booktabs = TRUE, midrule = '\\hline')
 
 # Headers
 
+## Head
+
 By default, sTab will use the column names for the head of the table(as
-demonstrated in the above examples). To customize the table head simply pass in
-the appropriate latex to the 'head' argument. The values of toprule and midrule
-are still used and should not be set in the head argument. If you do not want
-them included in your custom header, set either or both to NULL
+demonstrated in the above examples). The head argument is diplayed at the top of
+the table on each page that the table spans. To customize the table head simply
+pass in the appropriate latex to the 'head' argument. The values of toprule and
+midrule are still used and should not be set in the head argument. If you do not
+want them included in your custom header, set either or both to NULL
 
 ```{r}
 sTab(cars,
@@ -111,27 +114,44 @@ midrule will not be used.
 sTab(cars, head = NULL)
 ```
 
-In a supertabular environment, it is possible to present a different first head
-(i.e. header on first page of table only). When providing a first head, it is
-important to include any \\hline, \\toprule, or \\midrule's that you wish to
-appear with it.
+To preserve the top and midrules, pass an empty string to head. Often, people
+want a toprule with no head or midrule. In that case, pass an empty string into
+the head argument and NULL into midule. You can then use the default toprule
+value (as depicted below), explicitly set toprule, or set booktabs = TRUE to set
+the toprule and bottomrule simultaneously.
 
 ```{r}
-sTab(cars, firsthead = '\\hline\nfirst 1 & first 2 & first 3 & first 4 & first 5 \\\\\n\\hline')
+sTab(cars, head = '', midrule = NULL)
+```
+
+## FirstHead
+
+In a supertabular environment, it is possible to present a different first head
+(i.e. header on first page of table only).
+
+```{r}
+sTab(cars,
+     firsthead = 'f1 & f2 & f3 & f4 & f5 \\\\')
 ```
 
 **Important Note**
 
 As demonstrated in the above example, both head and firsthead use the toprule
-and midrule commands by default. If you desire to use different commands head
-and head (or if you want one, but not both not to use a top and midrule), you
-must set both toprule and midrule to NULL and manually insert the commands into
-head and firsthead as shown below.
+and midrule commands by default. If you desire to use different commands for the
+head and firsthead (or if you want one, but not both to use a top and
+midrule), you must set both toprule and midrule to NULL and manually insert the
+commands into head and firsthead as shown below examples.
 
 ```{r}
 sTab(cars, toprule = NULL, midrule = NULL,
      firsthead = '\\toprule\nf1 & f2 & f3 & f4 & f5 \\\\\nmidrule',
      head = '\\hline\n col1 & col2 & col3 & cll4 & col5 \\\\\n\\hline')
+```
+
+```{r}
+sTab(cars, toprule = NULL, midrule = NULL,
+     firsthead = '\\toprule\nf1 & f2 & f3 & f4 & f5 \\\\\nmidrule',
+     head = '\\toprule')
 ```
 
 # Rows
