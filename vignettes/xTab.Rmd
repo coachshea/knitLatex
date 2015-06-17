@@ -28,10 +28,11 @@ five columns of the mtcars data.frame, which we have saved in the variable
   For example, you need to pass '\\\\hline' to produce \\hline in the latex
   document. Similarly you must pass'\\\\\\\\' to produce \\\\.
 * The following examples write the latex tables to stdout for demonstration
-  purposes. To see an actual .Rnw file, the tex file that it produces and the
-  resultant pdf file select the following links:
+  purposes. To see an actual .Rnw file, and the resultant pdf file select the
+  links below. The pdf file is written to be a knitLatex tutorial in and of
+  itself. However, reading the .Rnw file can provide further insight into the
+  use of this package.
     + [example.Rnw](../examples/example.Rnw)
-    + [example.tex](../examples/example.tex)
     + [example.pdf](../examples/example.pdf)
 
 # Basics
