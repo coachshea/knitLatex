@@ -41,7 +41,7 @@ sTab <- function(x, label = NULL,
                  tail = bottomrule,
                  lasttail = NULL){
   .pt(c(
-       .printif(firsthead, "\\tablefirsthead{%s}"),
+       .printif(.printhead(toprule, firsthead, midrule), "\\tablefirsthead{%s}"),
        .printif(.printhead(toprule, head, midrule), "\\tablehead{%s}"),
        .printif(tail, "\\tabletail{%s}"),
        .printif(lasttail, "\\tablelasttail{%s}"),

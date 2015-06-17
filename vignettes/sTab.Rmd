@@ -1,12 +1,12 @@
 ---
-title: "xTab"
+title: "sTab"
 author: "John Shea"
 date: "`r Sys.Date()`"
 output:
   rmarkdown::html_vignette:
     toc: true
 vignette: >
-  %\VignetteIndexEntry{xTab}
+  %\VignetteIndexEntry{sTab}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,19 +16,22 @@ knitr::opts_chunk$set(collapse = TRUE)
 cars  <- mtcars[1:10,1:5]
 ```
 
-xTab is a command the produces a standard latex table/tabular environment
+sTab is a command the produces a standard latex table/tabular environment
 
 For all of the examples that follow, we will be using the first ten rows and
 five columns of the mtcars data.frame, which we have saved in the variable
-'cars'.
+'cars'. In an actual use case, a table this small could easily be accomodated
+with sTab, however, for the purposes of these demonstrations, it will be easier
+to see the effects of the individual options without needing to comb through a
+large, multi-page table. 
 
 **Important Notes**
 
-* When passing latex commands to an xTab argument, backslashes must be escaped.
+* When passing latex commands to an sTab argument, backslashes must be escaped.
   For example, you need to pass '\\\\hline' to produce '\\hline' in the latex
   document. Similarly you must pass'\\\\\\\\' to produce '\\\\'.
 * The following examples write the latex tables to stdout for demonstration
-  purposes. To see an actual .Rnw file, and the resultant pdf file select the
+  purposes. To see an actual .Rnw file, and the resultant pdf file, select the
   links below. The pdf file is written to be a knitLatex tutorial in and of
   itself. However, reading the .Rnw file can provide further insight into the
   uses of this package.
@@ -37,13 +40,13 @@ five columns of the mtcars data.frame, which we have saved in the variable
 
 # Basics
 
-## Standard xTab table
+## Standard sTab table
 
-To produce a latex table, simply pass a matrix or a data.frame to the xTab
+To produce a latex table, simply pass a matrix or a data.frame to the sTab
 function.
 
 ```{r}
-xTab(cars)
+sTab(cars)
 ```
 
 ## Labels
@@ -52,7 +55,7 @@ Simply pass a string into the 'label' option and then use \\ref{'label'} in your
 latex document to reference the table. When not set, defaults to NULL.
 
 ```{r}
-xTab(cars, label = 'tab:mytable')
+sTab(cars, label = 'tab:mytable')
 ```
 
 ## Captions
@@ -60,13 +63,13 @@ xTab(cars, label = 'tab:mytable')
 Place a caption at the top of the table.
 
 ```{r}
-xTab(cars, caption.top = 'my table')
+sTab(cars, caption.top = 'my table')
 ```
 
 Place a caption at the bottom of the table
 
 ```{r}
-xTab(cars, caption.bottom = 'my table')
+sTab(cars, caption.bottom = 'my table')
 ```
 
 ## Booktabs
@@ -75,37 +78,29 @@ Setting booktabs = TRUE sets the defaults of the toprule, midrule, and
 bottomrule arguments to \\toprule, \\midrule, and \\bottomrule respectively.
 When using booktabs rules, regardless of whether you set booktabs = TRUE or set
 them individually, make sure to include \\usepackage{booktabs} in your latex
-document. When booktabs is not set, xTab looks for the value of
-kLat.xTab.booktabs, then kLat.booktabs, then defaults to FALSE.
+document. When booktabs is not set, sTab looks for the value of
+kLat.sTab.booktabs, then kLat.booktabs, then defaults to FALSE.
 
 ```{r}
-xTab(cars, booktabs = TRUE)
+sTab(cars, booktabs = TRUE)
 ```
 
 If any of those options are explicitly set, the booktabs value has no effect. 
 
 ```{r}
-xTab(cars, booktabs = TRUE, midrule = '\\hline')
+sTab(cars, booktabs = TRUE, midrule = '\\hline')
 ```
 
-## Table Position
-
-If not set, xTAb will look for the value of kLat.xTab.position. If not set,
-defaults to 'ht'
-
-```{r}
-xTab(cars, position = '!htbp')
-```
 # Headers
 
-By default, xTab will use the column names for the head of the table(as
+By default, sTab will use the column names for the head of the table(as
 demonstrated in the above examples). To customize the table head simply pass in
 the appropriate latex to the 'head' argument. The values of toprule and midrule
 are still used and should not be set in the head argument. If you do not want
 them included in your custom header, set either or both to NULL
 
 ```{r}
-xTab(cars,
+sTab(cars,
      head = 'col1 & col 2 & col3 & \\eta & col5 \\\\')
 ```
 
@@ -113,19 +108,42 @@ Pass in NULL to avoid a table head. In the case of a NULL head, toprule and
 midrule will not be used.
 
 ```{r}
-xTab(cars, head = NULL)
+sTab(cars, head = NULL)
+```
+
+In a supertabular environment, it is possible to present a different first head
+(i.e. header on first page of table only). When providing a first head, it is
+important to include any \\hline, \\toprule, or \\midrule's that you wish to
+appear with it.
+
+```{r}
+sTab(cars, firsthead = '\\hline\nfirst 1 & first 2 & first 3 & first 4 & first 5 \\\\\n\\hline')
+```
+
+**Important Note**
+
+As demonstrated in the above example, both head and firsthead use the toprule
+and midrule commands by default. If you desire to use different commands head
+and head (or if you want one, but not both not to use a top and midrule), you
+must set both toprule and midrule to NULL and manually insert the commands into
+head and firsthead as shown below.
+
+```{r}
+sTab(cars, toprule = NULL, midrule = NULL,
+     firsthead = '\\toprule\nf1 & f2 & f3 & f4 & f5 \\\\\nmidrule',
+     head = '\\hline\n col1 & col2 & col3 & cll4 & col5 \\\\\n\\hline')
 ```
 
 # Rows
 
 ## Rownames
 
-When including row names in a table, by default xTab will use an empty column
-name for the 'rownames' column. When rows is not set, xTab looks for the value
-of kLat.xTab.rows, then klat.rows, then defaults to false.
+When including row names in a table, by default sTab will use an empty column
+name for the 'rownames' column. When rows is not set, sTab looks for the value
+of kLat.sTab.rows, then klat.rows, then defaults to false.
 
 ```{r}
-xTab(cars, rows = TRUE)
+sTab(cars, rows = TRUE)
 ```
 
 ## Rownames with custom header
@@ -134,7 +152,7 @@ When providing a custom head with rows set to TRUE, remember to account for the
 extra column produced by the row names
 
 ```{r}
-xTab(cars,
+sTab(cars,
      rows =  TRUE,
      head = 'rows & col1 & col2 & col3 & \\eta & col5 \\\\')
 ```
@@ -144,15 +162,15 @@ xTab(cars,
 Any arbitrary latex command can be inserted between each row, but the most
 common are \\hline and \\midrule. To use \\midrule, \\usepackage{booktabs} must
 be declared in the preamble of the latex document, but booktabs = TRUE **does
-not** need to be set on the table. When rowsep is not set, xTab looks for the
-value of kLat.xTab.rowsep, then kLat.rowsep, then defaults to an empty string.
+not** need to be set on the table. When rowsep is not set, sTab looks for the
+value of kLat.sTab.rowsep, then kLat.rowsep, then defaults to an empty string.
 
 ```{r}
-xTab(cars, rowsep = '\\hline')
+sTab(cars, rowsep = '\\hline')
 ```
 
 ```{r}
-xTab(cars, rowsep = '\\midrule')
+sTab(cars, rowsep = '\\midrule')
 ```
 
 # Columns
@@ -164,7 +182,7 @@ and you must handle column separation within this declaration. Defaults to 'r' f
 numeric vector columns and 'l' for character vector columns.
 
 ```{r}
-xTab(cars, coldef ='rlc|l|p{5cm}')
+sTab(cars, coldef ='rlc|l|p{5cm}')
 ```
 
 ## Column separator
@@ -173,5 +191,5 @@ Place any arbitrary latex between each column. Will have no effect if coldef is
 set.
 
 ```{r}
-xTab(cars, colsep = '|')
+sTab(cars, colsep = '|')
 ```
