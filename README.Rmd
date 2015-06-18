@@ -29,10 +29,9 @@ In the examples below, the code is shown as it would be provided in a knitr
 chunk, with the resultant latex. If this was an actual latex file, setting
 results = 'asis' would eliminate the comment markings (which is generally what
 you would want). Additionally, the examples below show only the basic usages of
-each function. For a more detailed examination, you should view the vigenttes
-(provided in inst/doc if you are viewing on github). To see a complete working
-example, see the documentation in inst/example (again if you are viewing on
-github).
+each function. For a more detailed examination, you should view the vigenttes or
+the help documentation. To see a complete working example, see the documentation
+provided inst/example (if you are viewing on github).
 
 # xTab
 
