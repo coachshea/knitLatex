@@ -12,6 +12,7 @@ vignette: >
 ---
 
 ```{r, echo = FALSE}
+library(knitLatex)
 knitr::opts_chunk$set(collapse = TRUE)
 cars  <- mtcars[1:10,1:5]
 ```
