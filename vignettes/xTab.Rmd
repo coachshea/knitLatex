@@ -19,7 +19,7 @@ cars  <- mtcars[1:10,1:5]
 
 # Introduction
 
-xTab is a function the produces a standard latex table/tabular environment
+xTab is a function that produces a standard latex table/tabular environment
 
 For all of the examples that follow, we will be using the first ten rows and
 five columns of the mtcars data.frame, which we have saved in the variable

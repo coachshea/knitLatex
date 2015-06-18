@@ -2,7 +2,6 @@
 output:
   md_document:
     variant: markdown_github
-    toc: TRUE
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -47,7 +46,7 @@ the documentation provided inst/example (if you are viewing on github).
 # xTab
 
 
-xTab is a command the produces a standard latex table/tabular environment
+xTab is a function that produces a standard latex table/tabular environment
 
 
 
@@ -539,6 +538,8 @@ xTab(cars, colsep = '|')
 ```
 
 # sTab
+
+sTab is a function that produces a supertabular environment
 
 ## Basics
 
@@ -1073,6 +1074,8 @@ sTab(cars, colsep = '|')
 ```
 
 # lTab
+
+lTab is a function for creating a longtable environment
 
 ## Basics
 

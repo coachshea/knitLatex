@@ -19,7 +19,7 @@ cars  <- mtcars[1:10,1:5]
 
 # Introduction
 
-lTab is a function the produces a standard latex table/tabular environment
+lTab is a function that produces a longtable environment.
 
 For all of the examples that follow, we will be using the first ten rows and
 five columns of the mtcars data.frame, which we have saved in the variable
