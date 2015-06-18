@@ -48,8 +48,7 @@ xTab(cars)
 
 ## Labels
 
-Simply pass a string into the 'label' option and then use \\ref{'label'} in your
-latex document to reference the table. When not set, defaults to NULL.
+Pass a string into the 'label' option. When not set, defaults to NULL.
 
 ```{r}
 xTab(cars, label = 'tab:mytable')
@@ -96,6 +95,7 @@ defaults to 'ht'
 ```{r}
 xTab(cars, position = '!htbp')
 ```
+
 # Headers
 
 By default, xTab will use the column names for the head of the table(as
@@ -114,6 +114,16 @@ midrule will not be used.
 
 ```{r}
 xTab(cars, head = NULL)
+```
+
+To preserve the top and midrules, pass an empty string to head. Often, people
+want a toprule with no head or midrule. In that case, pass an empty string into
+the head argument and NULL into midule. You can then use the default toprule
+value (as depicted below), explicitly set toprule, or set booktabs = TRUE to set
+the toprule and bottomrule simultaneously.
+
+```{r}
+lTab(cars, head = '', midrule = NULL)
 ```
 
 # Rows

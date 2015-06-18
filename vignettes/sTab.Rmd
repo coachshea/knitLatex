@@ -51,8 +51,7 @@ sTab(cars)
 
 ## Labels
 
-Simply pass a string into the 'label' option and then use \\ref{'label'} in your
-latex document to reference the table. When not set, defaults to NULL.
+Pass a string into the 'label' option. When not set, defaults to NULL.
 
 ```{r}
 sTab(cars, label = 'tab:mytable')

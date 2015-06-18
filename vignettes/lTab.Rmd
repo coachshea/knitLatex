@@ -51,8 +51,7 @@ lTab(cars)
 
 ## Labels
 
-Simply pass a string into the 'label' option and then use \\ref{'label'} in your
-latex document to reference the table. When not set, defaults to NULL.
+Pass a string into the 'label' option. When not set, defaults to NULL.
 
 ```{r}
 lTab(cars, label = 'tab:mytable')
@@ -61,14 +60,17 @@ lTab(cars, label = 'tab:mytable')
 ## Captions
 
 The lTab environment can place a caption in the head, firsthead, foot, or last
-foot.
+foot. When placing captions in the firsthad or lastfoot, it is important to set
+these options (even if they are empty strings) or strange bugs can occur.
 
 ```{r}
 lTab(cars, caption.head = 'my caption in head')
 ```
 
 ```{r}
-lTab(cars, caption.firsthead = 'my caption in firsthead')
+lTab(cars,
+     firsthead = 'f1 & f2 & f3 & f4 & f5 \\\\',
+     caption.firsthead = 'my caption in firsthead')
 ```
 
 ```{r}
@@ -76,7 +78,9 @@ lTab(cars, caption.foot = 'my caption in foot')
 ```
 
 ```{r}
-lTab(cars, caption.lastfoot = 'my caption in last foot')
+lTab(cars,
+     lastfoot = '\\hline',
+     caption.lastfoot = 'my caption in last foot')
 ```
 
 ## Booktabs

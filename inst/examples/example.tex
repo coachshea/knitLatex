@@ -274,6 +274,9 @@ mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear & carb \\
 }
 
 \newcommand\myplot{%
+\begin{alltt}
+\hlkwd{boxplot}\hlstd{(mpg} \hlopt{~} \hlstd{gear, megacars)}
+\end{alltt}
 \begin{figure}
 \includegraphics[width=\maxwidth]{figure/myplot-1} \caption[myfigure]{myfigure}\label{fig:myplot}
 \end{figure}
@@ -290,24 +293,61 @@ mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear & carb \\
 This file documents the knitLatex package. The purpose of this package is to
 provide \LaTeX{} helpers designed to work with the knitr package. The package
 provides functions. Three of which, xTab, sTab, and lTab create table,
-longtable, and supertabular environments in LaTeX respectively. The fourth
+supertabular, and longtable environments in LaTeX respectively. The fourth
 function knitr\_sethooks serves two purposes. First, it fixes a well-known bug
 in knitr which occurs when using custom hooks in a results=`asis' environment.
 Secondly, knitr\_sethooks provides a custom command called `com'. When
 ``com=TRUE'' is set in a chunk, the resulting chunk is turned into a \LaTeX{}
-command which can be referenced by the chuck label. For example, the chunk
+command which can be referenced by the chunck label. For example, the chunk
 ``$\langle\langle$mychuck$\rangle\rangle$'' can be referenced with
 \textbackslash{}mychuck anywhere is the documentand the resultant \LaTeX{} will
 be the same as what normally would have appeared in the spot of the chunk.
 
+The examples in the following chapters show the knitr chunk as a comment,
+followed by the code in the chunk with the results as they would appear in a
+\LaTeX{} document. It is not the purpose of this file to document all of the
+options available within each function, but rather to show how they can be used
+(with and without ``com = TRUE'') in a \LaTeX{} document. For a more detailed
+description of the options available, consult the individual vignettes (entitled
+  `xTab', `sTab' and `lTab'), as well as the individual
+  documentations (i.e. `?xTab', `?sTab', and `?lTab').
+
+\chapter{Preamble}
+
+The preamble to this document is as follows:\\
+
+\begin{verbatim}
+
+\usepackage{longtable,supertabular,hyperref}
+
+#<<setup, include=FALSE>>=
+# devtools::load_all is required to load the package because it is still in
+# development. For the user, you simply need require(knitLatex)
+  devtools::load_all('~/ignore/knitLatex', export_all=FALSE)
+  knitr_sethooks()
+  cars  <- mtcars[1:10,1:5]
+  megacars  <- rbind(mtcars, mtcars, mtcars)
+
+#<<mylongtable, echo=FALSE, com=TRUE, results='asis'>>=
+  lTab(megacars,
+       label = 'tab:mylongtable',
+       caption.head = 'My Long Table')
+
+#<<mysupertabular, echo=FALSE, com=TRUE, results='asis'>>=
+  sTab(megacars,
+       label = 'tab:mysupertabular',
+       caption.top = 'My Supertabular')
+
+#<<myplot, com=TRUE, fig.cap='myfigure'>>=
+  boxplot(mpg ~ gear, megacars)
+
+  @
+  
+\end{verbatim}
+
 \chapter{xTab}
 
-\section{with com}
-
-\section{without com}
-
-Because we set
-the label option as `tab:mytable' we can type the following:\\
+Because we set the label option as `tab:mytable' we can type the following:\\
 
 \noindent
 \verb|observe table \ref{tab:mytable} on page \pageref{tab:mytable}.|\\
@@ -320,6 +360,7 @@ observe table \ref{tab:mytable} on page \pageref{tab:mytable}.
 
 
 \begin{alltt}
+\hlcom{#<<mytable, results = 'asis'>>=}
 \hlkwd{xTab}\hlstd{(cars,} \hlkwc{label}\hlstd{=}\hlstr{'tab:mytable'}\hlstd{,} \hlkwc{caption.bottom}\hlstd{=}\hlstr{'My Table'}\hlstd{)}
 \end{alltt}
 \begin{table}[ht]
@@ -346,46 +387,63 @@ mpg & cyl & disp & hp & drat \\
 \end{table} 
 
 
-\chapter{lTab with com}
+\chapter{sTab}
 
-\section{with com}
+This chapter demonstrates a supertabular environment created with sTab. In this
+example, we created a latex command called \textbackslash{}mysupertabular in the
+preample of the document by setting `com = TRUE' on the chunk.
+
+The following table was produced in the preamble with this code (uncommented, of
+course):
+
+\begin{verbatim}
+#<<mysupertabular, echo=FALSE, com=TRUE, results='asis'>>=
+sTab(megacars,
+     label = 'tab:mysupertabular',
+     caption.top = 'My Supertabular')
+\end{verbatim}
+
+\noindent
+We then produce the table with the following command:
+
+\verb|\mysupertabular|
+
+\mysupertabular
+
+\chapter{lTab}
 
 This chapter demonstrates a longtable environment create with lTab. In this
 example, we created a latex command called \textbackslash{}mylongtable in the
 preample of the document by setting `com = TRUE' on the chunk.
 
+The following table was produced in the preamble with this code (uncommented, of
+course):
+
+\begin{verbatim}
+#<<mylongtable, echo=FALSE, com=TRUE, results='asis'>>=
+lTab(megacars,
+     label = 'tab:mylongtable',
+     caption.head = 'My Long Table')
+\end{verbatim}
+
+\noindent
+We then produce the table with the follwoing command:
+
+\verb|\mylongtable|
+
 \mylongtable
 
-\section{without com}
+\chapter{Figure}
 
+Even though the knitLatex package is primarily designed to be used with \LaTeX{}
+tables, here is an example of using the `com' hook with a figure. I did not
+set results=`asis', but could have.
 
-\chapter{sTab with com}
-
-\section{with com}
-
-\mysupertabular
-
-\section{without com}
-
-
-\chapter{figure}
-
-\section{with com}
+\begin{verbatim}
+#<<myplot, com=TRUE, fig.cap='myfigure'>>=
+boxplot(mpg ~ gear, megacars)
+\end{verbatim}
 
 \myplot
-
-\section{without com}
-
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
-\begin{alltt}
-\hlkwd{plot}\hlstd{(mtcars}\hlopt{$}\hlstd{mpg)}
-\end{alltt}
-\end{kframe}\begin{figure}
-\includegraphics[width=\maxwidth]{figure/myfigure-1} \caption[myotherfig]{myotherfig}\label{fig:myfigure}
-\end{figure}
-
-
-\end{knitrout}
 
 \end{document}
