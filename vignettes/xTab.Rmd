@@ -92,7 +92,7 @@ xTab(cars, booktabs = TRUE, midrule = '\\hline')
 
 ## Table Position
 
-If not set, xTAb will look for the value of kLat.xTab.position. If not set,
+If not set, xTab will look for the value of kLat.xTab.position. If not set,
 defaults to 'ht'
 
 ```{r}
@@ -172,7 +172,7 @@ xTab(cars, rowsep = '\\midrule')
 
 ## Column alginment
 
-Explicilty set the column definitions. If this is set, colsep will have no effect
+Explicitly set the column definitions. If this is set, colsep will have no effect
 and you must handle column separation within this declaration. Defaults to 'r' for
 numeric vector columns and 'l' for character vector columns.
 

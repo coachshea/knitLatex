@@ -23,7 +23,7 @@ lTab is a function the produces a standard latex table/tabular environment
 
 For all of the examples that follow, we will be using the first ten rows and
 five columns of the mtcars data.frame, which we have saved in the variable
-'cars'. In an actual use case, a table this small could easily be accomodated
+'cars'. In an actual use case, a table this small could easily be accommodated
 with lTab, however, for the purposes of these demonstrations, it will be easier
 to see the effects of the individual options without needing to comb through a
 large, multi-page table. 
@@ -211,7 +211,7 @@ lTab(cars, rowsep = '\\midrule')
 
 ## Column alginment
 
-Explicilty set the column definitions. If this is set, colsep will have no effect
+Explicitly set the column definitions. If this is set, colsep will have no effect
 and you must handle column separation within this declaration. Defaults to 'r' for
 numeric vector columns and 'l' for character vector columns.
 
