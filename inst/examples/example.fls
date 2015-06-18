@@ -103,6 +103,9 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmitt10.tfm
 INPUT figure/myplot-1.pdf
 INPUT ./figure/myplot-1.pdf
 INPUT ./figure/myplot-1.pdf
+INPUT figure/myotherplot-1.pdf
+INPUT ./figure/myotherplot-1.pdf
+INPUT ./figure/myotherplot-1.pdf
 INPUT example.aux
 INPUT ./example.out
 INPUT ./example.out
