@@ -9,7 +9,7 @@ Description: Provides several helper functions for working with knitr and latex.
   well-known bug in knitr, which distorts the 'results="asis"' command when used
   in conjunction with user-defined commands; and a com command (<<com=TRUE>>=)
   which renders the output from knitr as a latex command.
-Depends: R (>= 3.1.1)
+Depends: R (>= 3.2.0)
 License: GPL-3
 LazyData: true
 Imports: knitr
