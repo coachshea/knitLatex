@@ -1,0 +1,9 @@
+* using log directory ‘/home/coachshea/ignore/knitLatex/..Rcheck’
+* using R version 3.2.1 (2015-06-18)
+* using platform: x86_64-unknown-linux-gnu (32-bit)
+* using session charset: UTF-8
+* checking for file ‘./DESCRIPTION’ ... ERROR
+Required fields missing or empty:
+  ‘Author’ ‘Maintainer’
+* DONE
+Status: 1 ERROR
