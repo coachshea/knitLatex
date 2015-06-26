@@ -19,7 +19,7 @@ cars  <- mtcars[1:10,1:5]
 
 # Introduction
 
-xTab is a function that produces a standard latex table/tabular environment
+xTab is a function that produces a standard LaTeX table/tabular environment
 
 For all of the examples that follow, we will be using the first ten rows and
 five columns of the mtcars data.frame, which we have saved in the variable
@@ -27,10 +27,10 @@ five columns of the mtcars data.frame, which we have saved in the variable
 
 **Important Notes**
 
-* When passing latex commands to an xTab argument, backslashes must be escaped.
-  For example, you need to pass '\\\\hline' to produce '\\hline' in the latex
+* When passing LaTeX commands to an xTab argument, backslashes must be escaped.
+  For example, you need to pass '\\\\hline' to produce '\\hline' in the LaTeX
   document. Similarly you must pass'\\\\\\\\' to produce '\\\\'.
-* The following examples write the latex tables to stdout for demonstration
+* The following examples write the LaTeX tables to stdout for demonstration
   purposes. To see an actual .Rnw file, and the resultant pdf file select the
   links below. The pdf file is written to be a knitLatex tutorial in and of
   itself. However, reading the .Rnw file can provide further insight into the
@@ -42,7 +42,7 @@ five columns of the mtcars data.frame, which we have saved in the variable
 
 ## Standard xTab table
 
-To produce a latex table, simply pass a matrix or a data.frame to the xTab
+To produce a LaTeX table, simply pass a matrix or a data.frame to the xTab
 function.
 
 ```{r}
@@ -76,7 +76,7 @@ xTab(cars, caption.bottom = 'my table')
 Setting booktabs = TRUE sets the defaults of the toprule, midrule, and
 bottomrule arguments to \\toprule, \\midrule, and \\bottomrule respectively.
 When using booktabs rules, regardless of whether you set booktabs = TRUE or set
-them individually, make sure to include \\usepackage{booktabs} in your latex
+them individually, make sure to include \\usepackage{booktabs} in your LaTeX
 document. When booktabs is not set, xTab looks for the value of
 kLat.xTab.booktabs, then kLat.booktabs, then defaults to FALSE.
 
@@ -103,7 +103,7 @@ xTab(cars, position = '!htbp')
 
 By default, xTab will use the column names for the head of the table(as
 demonstrated in the above examples). To customize the table head simply pass in
-the appropriate latex to the 'head' argument. The values of toprule and midrule
+the appropriate LaTeX to the 'head' argument. The values of toprule and midrule
 are still used and should not be set in the head argument. If you do not want
 them included in your custom header, set either or both to NULL
 
@@ -154,9 +154,9 @@ xTab(cars,
 
 ## Row separator
 
-Any arbitrary latex command can be inserted between each row, but the most
+Any arbitrary LaTeX command can be inserted between each row, but the most
 common are \\hline and \\midrule. To use \\midrule, \\usepackage{booktabs} must
-be declared in the preamble of the latex document, but booktabs = TRUE **does
+be declared in the preamble of the LaTeX document, but booktabs = TRUE **does
 not** need to be set on the table. When rowsep is not set, xTab looks for the
 value of kLat.xTab.rowsep, then kLat.rowsep, then defaults to an empty string.
 
@@ -182,7 +182,7 @@ xTab(cars, coldef ='rlc|l|p{5cm}')
 
 ## Column separator
 
-Place any arbitrary latex between each column. Will have no effect if coldef is
+Place any arbitrary LaTeX between each column. Will have no effect if coldef is
 set.
 
 ```{r}

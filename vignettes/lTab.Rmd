@@ -30,10 +30,10 @@ large, multi-page table.
 
 **Important Notes**
 
-* When passing latex commands to an lTab argument, backslashes must be escaped.
-  For example, you need to pass '\\\\hline' to produce '\\hline' in the latex
+* When passing LaTeX commands to an lTab argument, backslashes must be escaped.
+  For example, you need to pass '\\\\hline' to produce '\\hline' in the LaTeX
   document. Similarly you must pass'\\\\\\\\' to produce '\\\\'.
-* The following examples write the latex tables to stdout for demonstration
+* The following examples write the LaTeX tables to stdout for demonstration
   purposes. To see an actual .Rnw file, and the resultant pdf file, select the
   links below. The pdf file is written to be a knitLatex tutorial in and of
   itself. However, reading the .Rnw file can provide further insight into the
@@ -45,7 +45,7 @@ large, multi-page table.
 
 ## Standard lTab table
 
-To produce a latex table, simply pass a matrix or a data.frame to the lTab
+To produce a LaTeX table, simply pass a matrix or a data.frame to the lTab
 function.
 
 ```{r}
@@ -91,7 +91,7 @@ lTab(cars,
 Setting booktabs = TRUE sets the defaults of the toprule, midrule, and
 bottomrule arguments to \\toprule, \\midrule, and \\bottomrule respectively.
 When using booktabs rules, regardless of whether you set booktabs = TRUE or set
-them individually, make sure to include \\usepackage{booktabs} in your latex
+them individually, make sure to include \\usepackage{booktabs} in your LaTeX
 document. When booktabs is not set, lTab looks for the value of
 kLat.lTab.booktabs, then kLat.booktabs, then defaults to FALSE.
 
@@ -112,7 +112,7 @@ lTab(cars, booktabs = TRUE, midrule = '\\hline')
 By default, lTab will use the column names for the head of the table(as
 demonstrated in the above examples). The head argument is displayed at the top of
 the table on each page that the table spans. To customize the table head simply
-pass in the appropriate latex to the 'head' argument. The values of toprule and
+pass in the appropriate LaTeX to the 'head' argument. The values of toprule and
 midrule are still used and should not be set in the head argument. If you do not
 want them included in your custom header, set either or both to NULL
 
@@ -193,9 +193,9 @@ lTab(cars,
 
 ## Row separator
 
-Any arbitrary latex command can be inserted between each row, but the most
+Any arbitrary LaTeX command can be inserted between each row, but the most
 common are \\hline and \\midrule. To use \\midrule, \\usepackage{booktabs} must
-be declared in the preamble of the latex document, but booktabs = TRUE **does
+be declared in the preamble of the LaTeX document, but booktabs = TRUE **does
 not** need to be set on the table. When rowsep is not set, lTab looks for the
 value of kLat.lTab.rowsep, then kLat.rowsep, then defaults to an empty string.
 
@@ -221,7 +221,7 @@ lTab(cars, coldef ='rlc|l|p{5cm}')
 
 ## Column separator
 
-Place any arbitrary latex between each column. Will have no effect if coldef is
+Place any arbitrary LaTeX between each column. Will have no effect if coldef is
 set.
 
 ```{r}
