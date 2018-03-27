@@ -5,7 +5,7 @@
 <<setup, include=FALSE>>=
 # devtools::load_all is required to load the package because it is still in
 # development. For the user, you simply need require(knitLatex)
-devtools::load_all('~/ignore/knitLatex', export_all=FALSE)
+devtools::load_all('./', export_all=FALSE)
 knitr_sethooks()
 cars  <- mtcars[1:10,1:5]
 megacars  <- rbind(mtcars, mtcars, mtcars)

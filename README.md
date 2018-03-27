@@ -10,17 +10,17 @@ output:
 
 # Introduction
 
-This package includes several helper functions for working with knitr and latex.
-It includes xTab for creating traditional latex tables, lTab for generating
-Longtable environments, and sTab for generating a Supertabular environment.
+This package provides several helper functions for working with knitr and LaTeX.
+It includes xTab for creating traditional LaTeX tables, lTab for generating
+longtable environments, and sTab for generating a supertabular environment.
 Additionally, this package contains a knitr_sethooks function. knitr_sethooks
-serves two purposes. First, it fixes a well-known bug which distorts the
-"results='asis'" command when used in conjunction with userdifiend commands.
-Second, it provides a com command (\<\<com=TRUE\>\>=) which renders the output
-from knitr as a latex command.
+serves two purposes. First, it fixes a well-known bug in knitr, which distorts
+the "results='asis'" command when used in conjunction with user-defined
+commands. Second, it provides a com command (\<\<com=TRUE\>\>=) which renders
+the output from knitr as a LaTeX command.
 
 In the examples below, the code is shown as it would be provided in a knitr
-chunk, with the resultant latex depcited below. If this was an actual latex
+chunk, with the resultant LaTeX depcited below. If this was an actual LaTeX
 file, setting results = 'asis' would eliminate the comment markings (which is
 generally what you would want). Additionally, the examples below show only the
 basic usages of each function. For a more detailed examination, you should view
@@ -29,13 +29,13 @@ the documentation provided inst/example (if you are viewing on github).
 
 **Important Notes**
 
-* When passing latex commands to an xTab argument, backslashes must be escaped.
-  For example, you need to pass '\\\\hline' to produce '\\hline' in the latex
+* When passing LaTeX commands to an xTab argument, backslashes must be escaped.
+  For example, you need to pass '\\\\hline' to produce '\\hline' in the LaTeX
   document. Similarly you must pass'\\\\\\\\' to produce '\\\\'.
 * For all of the examples that follow, we will be using the first ten rows and
   five columns of the mtcars data.frame, which we have saved in the variable
   'cars'.
-* The following examples write the latex tables to stdout for demonstration
+* The following examples write the LaTeX tables to stdout for demonstration
   purposes. To see an actual .Rnw file, and the resultant pdf file select the
   links below. The pdf file is written to be a knitLatex tutorial in and of
   itself. However, reading the .Rnw file can provide further insight into the
@@ -46,7 +46,7 @@ the documentation provided inst/example (if you are viewing on github).
 # xTab
 
 
-xTab is a function that produces a standard latex table/tabular environment
+xTab is a function that produces a standard LaTeX table/tabular environment
 
 
 
@@ -54,7 +54,7 @@ xTab is a function that produces a standard latex table/tabular environment
 
 ### Standard xTab table
 
-To produce a latex table, simply pass a matrix or a data.frame to the xTab
+To produce a LaTeX table, simply pass a matrix or a data.frame to the xTab
 function.
 
 
@@ -175,7 +175,7 @@ xTab(cars, caption.bottom = 'my table')
 Setting booktabs = TRUE sets the defaults of the toprule, midrule, and
 bottomrule arguments to \\toprule, \\midrule, and \\bottomrule respectively.
 When using booktabs rules, regardless of whether you set booktabs = TRUE or set
-them individually, make sure to include \\usepackage{booktabs} in your latex
+them individually, make sure to include \\usepackage{booktabs} in your LaTeX
 document. When booktabs is not set, xTab looks for the value of
 kLat.xTab.booktabs, then kLat.booktabs, then defaults to FALSE.
 
@@ -265,7 +265,7 @@ xTab(cars, position = '!htbp')
 
 By default, xTab will use the column names for the head of the table(as
 demonstrated in the above examples). To customize the table head simply pass in
-the appropriate latex to the 'head' argument. The values of toprule and midrule
+the appropriate LaTeX to the 'head' argument. The values of toprule and midrule
 are still used and should not be set in the head argument. If you do not want
 them included in your custom header, set either or both to NULL
 
@@ -418,9 +418,9 @@ xTab(cars,
 
 ### Row separator
 
-Any arbitrary latex command can be inserted between each row, but the most
+Any arbitrary LaTeX command can be inserted between each row, but the most
 common are \\hline and \\midrule. To use \\midrule, \\usepackage{booktabs} must
-be declared in the preamble of the latex document, but booktabs = TRUE **does
+be declared in the preamble of the LaTeX document, but booktabs = TRUE **does
 not** need to be set on the table. When rowsep is not set, xTab looks for the
 value of kLat.xTab.rowsep, then kLat.rowsep, then defaults to an empty string.
 
@@ -509,7 +509,7 @@ xTab(cars, coldef ='rlc|l|p{5cm}')
 
 ### Column separator
 
-Place any arbitrary latex between each column. Will have no effect if coldef is
+Place any arbitrary LaTeX between each column. Will have no effect if coldef is
 set.
 
 
@@ -545,7 +545,7 @@ sTab is a function that produces a supertabular environment
 
 ### Standard sTab table
 
-To produce a latex table, simply pass a matrix or a data.frame to the sTab
+To produce a LaTeX table, simply pass a matrix or a data.frame to the sTab
 function.
 
 
@@ -658,7 +658,7 @@ sTab(cars, caption.bottom = 'my table')
 Setting booktabs = TRUE sets the defaults of the toprule, midrule, and
 bottomrule arguments to \\toprule, \\midrule, and \\bottomrule respectively.
 When using booktabs rules, regardless of whether you set booktabs = TRUE or set
-them individually, make sure to include \\usepackage{booktabs} in your latex
+them individually, make sure to include \\usepackage{booktabs} in your LaTeX
 document. When booktabs is not set, sTab looks for the value of
 kLat.sTab.booktabs, then kLat.booktabs, then defaults to FALSE.
 
@@ -717,7 +717,7 @@ sTab(cars, booktabs = TRUE, midrule = '\\hline')
 By default, sTab will use the column names for the head of the table(as
 demonstrated in the above examples). The head argument is diplayed at the top of
 the table on each page that the table spans. To customize the table head simply
-pass in the appropriate latex to the 'head' argument. The values of toprule and
+pass in the appropriate LaTeX to the 'head' argument. The values of toprule and
 midrule are still used and should not be set in the head argument. If you do not
 want them included in your custom header, set either or both to NULL
 
@@ -962,9 +962,9 @@ sTab(cars,
 
 ### Row separator
 
-Any arbitrary latex command can be inserted between each row, but the most
+Any arbitrary LaTeX command can be inserted between each row, but the most
 common are \\hline and \\midrule. To use \\midrule, \\usepackage{booktabs} must
-be declared in the preamble of the latex document, but booktabs = TRUE **does
+be declared in the preamble of the LaTeX document, but booktabs = TRUE **does
 not** need to be set on the table. When rowsep is not set, sTab looks for the
 value of kLat.sTab.rowsep, then kLat.rowsep, then defaults to an empty string.
 
@@ -1047,7 +1047,7 @@ sTab(cars, coldef ='rlc|l|p{5cm}')
 
 ### Column separator
 
-Place any arbitrary latex between each column. Will have no effect if coldef is
+Place any arbitrary LaTeX between each column. Will have no effect if coldef is
 set.
 
 
@@ -1081,7 +1081,7 @@ lTab is a function for creating a longtable environment
 
 ### Standard lTab table
 
-To produce a latex table, simply pass a matrix or a data.frame to the lTab
+To produce a LaTeX table, simply pass a matrix or a data.frame to the lTab
 function.
 
 
@@ -1264,7 +1264,7 @@ lTab(cars,
 Setting booktabs = TRUE sets the defaults of the toprule, midrule, and
 bottomrule arguments to \\toprule, \\midrule, and \\bottomrule respectively.
 When using booktabs rules, regardless of whether you set booktabs = TRUE or set
-them individually, make sure to include \\usepackage{booktabs} in your latex
+them individually, make sure to include \\usepackage{booktabs} in your LaTeX
 document. When booktabs is not set, lTab looks for the value of
 kLat.lTab.booktabs, then kLat.booktabs, then defaults to FALSE.
 
@@ -1327,7 +1327,7 @@ lTab(cars, booktabs = TRUE, midrule = '\\hline')
 By default, lTab will use the column names for the head of the table(as
 demonstrated in the above examples). The head argument is displayed at the top of
 the table on each page that the table spans. To customize the table head simply
-pass in the appropriate latex to the 'head' argument. The values of toprule and
+pass in the appropriate LaTeX to the 'head' argument. The values of toprule and
 midrule are still used and should not be set in the head argument. If you do not
 want them included in your custom header, set either or both to NULL
 
@@ -1590,9 +1590,9 @@ lTab(cars,
 
 ### Row separator
 
-Any arbitrary latex command can be inserted between each row, but the most
+Any arbitrary LaTeX command can be inserted between each row, but the most
 common are \\hline and \\midrule. To use \\midrule, \\usepackage{booktabs} must
-be declared in the preamble of the latex document, but booktabs = TRUE **does
+be declared in the preamble of the LaTeX document, but booktabs = TRUE **does
 not** need to be set on the table. When rowsep is not set, lTab looks for the
 value of kLat.lTab.rowsep, then kLat.rowsep, then defaults to an empty string.
 
@@ -1681,7 +1681,7 @@ lTab(cars, coldef ='rlc|l|p{5cm}')
 
 ### Column separator
 
-Place any arbitrary latex between each column. Will have no effect if coldef is
+Place any arbitrary LaTeX between each column. Will have no effect if coldef is
 set.
 
 
