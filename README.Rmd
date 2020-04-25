@@ -48,8 +48,6 @@ the documentation provided inst/example (if you are viewing on github).
   links below. The pdf file is written to be a knitLatex tutorial in and of
   itself. However, reading the .Rnw file can provide further insight into the
   uses of this package.
-    + [example.Rnw](./inst/examples/example.Rnw)
-    + [example.pdf](./inst/examples/example.pdf)
 
 # xTab
 

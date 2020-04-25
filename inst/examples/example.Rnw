@@ -45,13 +45,13 @@ command which can be referenced by the chunck label. For example, the chunk
 be the same as what normally would have appeared in the spot of the chunk.
 
 The examples in the following chapters show the knitr chunk as a comment,
-followed by the code in the chunk with the results as they would appear in a
-\LaTeX{} document. It is not the purpose of this file to document all the
-options available within each function, but rather to show how they can be used
-(with and without ``com = TRUE'') in a \LaTeX{} document. For a more detailed
-description of the options available, consult the individual vignettes (entitled
-  `xTab', `sTab' and `lTab'), as well as the individual
-  documentations (i.e. `?xTab', `?sTab', and `?lTab').
+followed by the code in the chunk with the results as they would appear in
+a \LaTeX{} document. It is not the purpose of this file to document all the
+options available within each function, but rather to show how they can
+be used (with and without ``com = TRUE'') in a \LaTeX{} document. For a
+more detailed description of the options available, consult the individual
+vignettes (entitled `xTab', `sTab' and `lTab'), as well as the individual
+documentations (i.e. `?xTab', `?sTab', and `?lTab').
 
 \chapter{Preamble}
 
