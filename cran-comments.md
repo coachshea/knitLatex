@@ -3,11 +3,11 @@
 As per initial feeback:
 
   - put software packages in single quotes in the DESCRIPTION file
-  - changed instances of lates to LaTeX
+  - changed instances of latex to LaTeX
 
 ## Test Environment
 
-local debian Jessie, R 3.2.0
+local debian Stretch (9), R 3.6.3
 
 devtools::build_win()
 
@@ -18,4 +18,4 @@ win-builder.
 
 ## Downstream dependencies
 
-This package currently has no downstream dependencies.
+This package has no downstream dependencies.

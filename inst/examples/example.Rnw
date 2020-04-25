@@ -2,10 +2,14 @@
 
 \usepackage{longtable,supertabular,hyperref}
 
+
 <<setup, include=FALSE>>=
+# Try echo=FALSE, com=TRUE, results='asis' as defaults
 # devtools::load_all is required to load the package because it is still in
 # development. For the user, you simply need require(knitLatex)
 devtools::load_all('./', export_all=FALSE)
+
+# try to remove sethooks and see if this still works
 knitr_sethooks()
 cars  <- mtcars[1:10,1:5]
 megacars  <- rbind(mtcars, mtcars, mtcars)
@@ -31,18 +35,18 @@ boxplot(mpg ~ gear, megacars)
 
 \chapter{Introduction}
 
-This file documents the knitLatex package. The purpose of this package is to
-provide \LaTeX{} helpers designed to work with the knitr package. The package
-provides functions. Three of which, xTab, sTab, and lTab create table,
-supertabular, and longtable environments in LaTeX respectively. The fourth
-function knitr\_sethooks serves two purposes. First, it fixes a well-known bug
-in knitr which occurs when using custom hooks in a ``results=`asis''' environment.
-Secondly, knitr\_sethooks provides a custom command called `com'. When
-``com=TRUE'' is set in a chunk, the resulting chunk is turned into a \LaTeX{}
-command which can be referenced by the chunck label. For example, the chunk
-``$\langle\langle$mychuck$\rangle\rangle$'' can be referenced with
-\textbackslash{}mychuck anywhere is the document and the resultant \LaTeX{} will
-be the same as what normally would have appeared in the spot of the chunk.
+The purpose of this package is to provide \LaTeX{} helpers designed to work with
+the knitr package. The package provides functions. Three of which, xTab, sTab,
+and lTab create table, supertabular, and longtable environments in LaTeX
+respectively. The fourth function knitr\_sethooks serves two purposes. First, it
+fixes a well-known bug in knitr which occurs when using custom hooks in a
+``results=`asis''' environment. Secondly, knitr\_sethooks provides a custom
+command called `com'. When ``com=TRUE'' is set in a chunk, the resulting chunk
+is turned into a \LaTeX{} command which can be referenced by the chunck label.
+For example, the chunk ``$\langle\langle$mychuck$\rangle\rangle$'' can be
+referenced with \textbackslash{}mychuck anywhere in the document and the
+resultant \LaTeX{} will be the same as what normally would have appeared in the
+spot of the chunk.
 
 The examples in the following chapters show the knitr chunk as a comment,
 followed by the code in the chunk with the results as they would appear in

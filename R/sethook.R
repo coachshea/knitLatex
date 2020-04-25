@@ -20,6 +20,8 @@ knitr_sethooks <- function(){
 
   hook_chunk = knitr::knit_hooks$get('chunk')
 
+  # Check to see if this is still needed
+  # not needed if the bug mentioned above has been fixed
   knitr::knit_hooks$set(chunk = function(x, options){
                         x = hook_chunk(x, options)
                         if (options$results == 'asis'){
