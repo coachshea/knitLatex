@@ -12,5 +12,5 @@ Description: Provides several helper functions for working with 'knitr' and 'LaT
 Depends: R (>= 3.6.3)
 License: GPL-3
 LazyData: true
-Imports: knitr (>= 1.28.5)
+Imports: knitr (>= 1.28)
 VignetteBuilder: knitr

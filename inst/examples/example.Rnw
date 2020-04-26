@@ -11,9 +11,11 @@ devtools::load_all('./', export_all=FALSE)
 
 # try to remove sethooks and see if this still works
 knitr_sethooks()
+
 cars  <- mtcars[1:10,1:5]
 megacars  <- rbind(mtcars, mtcars, mtcars)
 
+  
 <<mylongtable, echo=FALSE, com=TRUE, results='asis'>>=
 lTab(megacars,
      label = 'tab:mylongtable',
