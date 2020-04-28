@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 cars  <- mtcars[1:10,1:5]
 ```
 
+Check out this package on [CRAN](https://cran.r-project.org/web/packages/knitLatex/)
+
 # Introduction
 
 This package provides several helper functions for working with knitr and LaTeX.
@@ -48,6 +50,9 @@ the documentation provided inst/example (if you are viewing on github).
   links below. The pdf file is written to be a knitLatex tutorial in and of
   itself. However, reading the .Rnw file can provide further insight into the
   uses of this package.
+
+    * [example.Rnw](/doc/example.Rnw)
+    * [example.pdf](/doc/example.pdf)
 
 # xTab
 
